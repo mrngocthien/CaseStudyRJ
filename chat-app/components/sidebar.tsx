@@ -1,10 +1,12 @@
-import { Avatar, Button, IconButton, Tooltip } from '@mui/material';
+import { Avatar, Button, Icon, IconButton, Tooltip } from '@mui/material';
 import React from 'react'
 import styled from 'styled-components';
 import ChatIcon from '@mui/icons-material/Chat'
 import MoreVerticalIcon from '@mui/icons-material/MoreVert'
 import LogoutIcon from '@mui/icons-material/Logout'
 import SearchIcon from '@mui/icons-material/Search'
+import { signOut } from 'firebase/auth';
+import { auth } from 'config/firebase';
 
 
 const StyledContainer = styled.div`
@@ -20,11 +22,11 @@ const StyledHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    height: 80px;
+    height: 60px;
     border-bottom: 1px solid whitesmoke;
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: wheat;
     z-index: 1;
 `
 
@@ -41,13 +43,13 @@ const StyledSearch = styled.div`
     align-items: center;
     padding: 15px;
     border-radius: 2px;
-    background: white;
 `
 
 const StyledSearchInput = styled.input`
     outline: none;
     border: none;
     flex: 1;
+    background: #ffff;
 `
 const StyledSideBarButton = styled(Button)`
     width: 100%;
@@ -60,6 +62,13 @@ const StyledSideBarButton = styled(Button)`
 `
 
 const Sidebar = () => {
+    const logout =async () => {
+        try {
+            await signOut(auth)
+        } catch (error) {
+            console.error(error)
+        }
+    }
   return (
     <StyledContainer>
         <StyledHeader>
@@ -73,7 +82,7 @@ const Sidebar = () => {
                 <IconButton>
                     <MoreVerticalIcon></MoreVerticalIcon>
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={logout}>
                     <LogoutIcon></LogoutIcon>
                 </IconButton>
             </div>
