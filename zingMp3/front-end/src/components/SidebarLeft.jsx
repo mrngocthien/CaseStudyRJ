@@ -8,7 +8,7 @@ const notActiveStyle = 'font-bold py-2 px-[25px] flex gap-[12px] items-center te
 
 const SidebarLeft = () => {
   return (
-    <div className='flex flex-col bg-[#221a2d]'>
+    <div className='flex flex-col h-full bg-main-200'>
       <div className='w-full h-[70px] px-[15px] py-[25px] flex justify-start items-center'>
         <img src={logo} alt="logo" className='w-[120px] oh-10' />
       </div>

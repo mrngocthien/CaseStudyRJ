@@ -3,9 +3,11 @@ import {
     MdOutlineFeed, MdOutlineKeyboardDoubleArrowLeft, 
     MdOutlineKeyboardDoubleArrowRight 
 } from 'react-icons/md'
-import { AiOutlineLineChart} from 'react-icons/ai'
+import { AiOutlineLineChart } from 'react-icons/ai'
 import { BiDisc } from 'react-icons/bi'
-import { IoSearchOutline } from 'react-icons/io5'
+import { IoSearchOutline, IoRepeat, IoShuffle } from 'react-icons/io5'
+import { RxHeart, RxHeartFilled } from 'react-icons/rx'
+import { BsThreeDots, BsSkipStartFill, BsSkipEndFill, BsPlayCircle, BsPauseCircle } from 'react-icons/bs'
 
 const icons = {
     MdOutlineLibraryMusic,
@@ -14,7 +16,16 @@ const icons = {
     MdOutlineFeed,
     MdOutlineKeyboardDoubleArrowLeft,
     MdOutlineKeyboardDoubleArrowRight,
-    IoSearchOutline
+    IoSearchOutline,
+    RxHeart,
+    RxHeartFilled,
+    BsThreeDots,
+    IoRepeat,
+    BsSkipEndFill,
+    BsSkipStartFill,
+    BsPlayCircle,
+    IoShuffle,
+    BsPauseCircle
 }
 
 export default icons;
