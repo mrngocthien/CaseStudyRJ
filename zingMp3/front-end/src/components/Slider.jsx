@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getArrSlider } from "../ultis/funtions";
+import * as actions from "../store/actions";
 
 const Slider = () => {
   const { banner } = useSelector((state) => state.app);
-  console.log(banner);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const sliderElements = document.getElementsByClassName("slider-items");
@@ -12,39 +13,82 @@ const Slider = () => {
       max = 2;
 
     const intervalId = setInterval(() => {
-      const list = getArrSlider(min, max, sliderElements.length);
+      const list = getArrSlider(min, max, sliderElements.length - 1);
+
       for (let i = 0; i < sliderElements.length; i++) {
+        // Delete classnames (css)
+        sliderElements[i]?.classList?.remove(
+          "animate-slide-right",
+          "order-last",
+          "z-20"
+        );
+        sliderElements[i]?.classList?.remove(
+          "animate-slide-left",
+          "order-first",
+          "z-10"
+        );
+        sliderElements[i]?.classList?.remove(
+          "animate-slide-left2",
+          "order-2",
+          "z-10"
+        );
+
+        // Hide or Show images
         if (list.some((item) => item === i)) {
-          (sliderElements[i].style.cssText = `display: none`)
+          sliderElements[i].style.cssText = `display: block`;
         } else {
-          (sliderElements[i].style.cssText = `display: block`)
+          sliderElements[i].style.cssText = `display: none`;
         }
       }
-      if (min < 5 || max < 5) {
-        min += 1;
-        max += 1;
-      }
-      if (min === sliderElements.length) {
-        min = 0;
-      }
-      if (max === sliderElements.length) {
-        max = 0;
-      }
-      console.log(list);
-    }, 1000);
+
+      // Add animation by adding classnames
+      list.forEach((item) => {
+        if (item === max) {
+          sliderElements[item]?.classList?.add(
+            "animate-slide-right",
+            "order-last",
+            "z-20"
+          );
+        } else if (item === min) {
+          sliderElements[item]?.classList?.add(
+            "animate-slide-left",
+            "order-first",
+            "z-10"
+          );
+        } else {
+          sliderElements[item]?.classList?.add(
+            "animate-slide-left2",
+            "order-2",
+            "z-10"
+          );
+        }
+      });
+      min = min === sliderElements.length - 1 ? 0 : min + 1;
+      max = max === sliderElements.length - 1 ? 0 : max + 1;
+    }, 3000);
+
     return () => {
       intervalId && clearInterval(intervalId);
     };
   }, []);
+
+  const handleClickedBanner = (item) => {
+    if (item.type === 1) {
+      dispatch(actions.setCurrentSongId(item.encodeId));
+    }
+  };
   return (
     <div className="flex w-full gap-7 overflow-hidden px-[59px] pt-8">
-      {banner?.map((item) => {
+      {banner?.map((item, index) => {
         return (
           <img
             key={item.encodeId}
             src={item.banner}
             alt="banner"
-            className="slider-items flex-1 object-contain rounded-lg w-2/5 transition-all"
+            onClick={() => handleClickedBanner(item)}
+            className={`slider-items flex-1 object-contain w-[30%] rounded-lg ${
+              index <= 2 ? "block" : "hidden"
+            }`}
           />
         );
       })}
