@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArrSlider } from "../ultis/funtions";
 import * as actions from "../store/actions";
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
   const { banner } = useSelector((state) => state.app);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  //animation for banner
   useEffect(() => {
     const sliderElements = document.getElementsByClassName("slider-items");
     let min = 0,
@@ -75,6 +78,11 @@ const Slider = () => {
   const handleClickedBanner = (item) => {
     if (item.type === 1) {
       dispatch(actions.setCurrentSongId(item.encodeId));
+      dispatch(actions.play(true))
+    } else if (item.type === 4) {
+      const albumPath = item?.link.split('.')[0];
+      console.log(item)
+      navigate(albumPath)
     }
   };
   return (

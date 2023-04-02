@@ -1,2 +1,2 @@
 export * from './home'
-export * from './songId'
+export * from './music'

@@ -8,6 +8,7 @@ import { BiDisc } from 'react-icons/bi'
 import { IoSearchOutline, IoRepeat, IoShuffle } from 'react-icons/io5'
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
 import { BsThreeDots, BsSkipStartFill, BsSkipEndFill, BsPlayCircle, BsPauseCircle } from 'react-icons/bs'
+import { HiOutlineMusicNote } from 'react-icons/hi'
 
 const icons = {
     MdOutlineLibraryMusic,
@@ -25,7 +26,8 @@ const icons = {
     BsSkipStartFill,
     BsPlayCircle,
     IoShuffle,
-    BsPauseCircle
+    BsPauseCircle,
+    HiOutlineMusicNote
 }
 
 export default icons;
