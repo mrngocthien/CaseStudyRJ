@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Song from './Song'
 
 const SongList = ({ songs, totalDuration }) => {
@@ -6,7 +6,10 @@ const SongList = ({ songs, totalDuration }) => {
     return (
         <div className='w-full flex flex-col text-xs'>
             <div className='flex justify-between items-center p-[10px] font-semibold text-gray-400'>
-                <span>BÀI HÁT</span>
+                <span>
+                    <span></span>
+                    <span>BÀI HÁT</span>
+                </span>
                 <span>ALBUM</span>
                 <span>THỜI GIAN</span>
             </div>
@@ -19,4 +22,4 @@ const SongList = ({ songs, totalDuration }) => {
     )
 }
 
-export default SongList
+export default memo(SongList)
