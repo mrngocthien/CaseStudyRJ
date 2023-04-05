@@ -2,11 +2,12 @@ import React, { memo } from 'react'
 import Song from './Song'
 import icons from '../../ultis/icons'
 import moment from 'moment'
+import { useSelector } from 'react-redux'
 
 const { BsDot } = icons
 
-const SongList = ({ songs, totalDuration }) => {
-    console.log({songs, totalDuration})
+const SongList = ({ totalDuration }) => {
+    const { songs } = useSelector(state => state.music)
     return (
         <div className='w-full flex flex-col text-xs'>
             <div className='flex justify-between items-center p-[10px] font-semibold text-gray-400'>

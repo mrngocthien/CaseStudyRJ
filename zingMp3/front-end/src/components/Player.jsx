@@ -21,13 +21,14 @@ const {
 var intervalId;
 
 const Player = () => {
-    const { currentSongId, isPlaying, atAlbum } = useSelector((state) => state.music);
+    const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
     const [audio, setAudio] = useState(new Audio());
+    const [currentSeconds, setCurrentSeconds] = useState(0)
+    const [isShuffle, setIsShuffle] = useToggle();
+    const [liked, setLiked] = useToggle();
     const thumbRef = useRef();
     const trackRef = useRef();
-    const [currentSeconds, setCurrentSeconds] = useState(0)
-    const [liked, setLiked] = useToggle();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -44,6 +45,7 @@ const Player = () => {
                 audio.pause();
                 setAudio(new Audio(res2?.data?.data[128]));
             } else {
+                audio.pause()
                 setAudio(new Audio())
                 setCurrentSeconds(0)
                 thumbRef.current.style.cssText = 'right: 100%'
@@ -88,9 +90,34 @@ const Player = () => {
         setLiked();
     }
 
+    const handleShuffle = () => { 
+        setIsShuffle();
+    }
     const handleNextSong = () => { 
-        
-     }
+        if (songs) {
+            let currentSongIndex;
+            songs?.forEach((item, index) => {
+                if (item.encodeId === currentSongId) {
+                    currentSongIndex = index
+                }
+            })
+            dispatch(actions.setCurrentSongId(songs[currentSongIndex + 1].encodeId))
+            dispatch(actions.play(true))
+        }    
+    }
+
+    const handlePrevSong = () => { 
+        if (songs) {
+            let currentSongIndex;
+            songs?.forEach((item, index) => {
+                if (item.encodeId === currentSongId) {
+                    currentSongIndex = index
+                }
+            })
+            dispatch(actions.setCurrentSongId(songs[currentSongIndex - 1].encodeId))
+            dispatch(actions.play(true))
+        }    
+    }
     const handleClickProgressBar = (e) => { 
         const trackRect = trackRef.current.getBoundingClientRect();
         const percent = Math.round((e.clientX - trackRect.left) * 10000 / trackRect.width) / 100;
@@ -122,16 +149,26 @@ const Player = () => {
             </div>
             <div className="w-[40%] flex-auto flex flex-col gap-3 items-center justify-center py-2">
                 <div className="flex gap-6 items-center">
-                    <span className="cursor-pointer" title="Bật phát ngẫu nhiên">
+                    <span 
+                        className={`cursor-pointer ${isShuffle && 'text-[#eb1eff]'}`}
+                        title="Bật phát ngẫu nhiên"
+                        onClick={handleShuffle}
+                    >
                         <IoShuffle size={25}/>
                     </span>
-                    <span className="cursor-pointer">
+                    <span 
+                        className={`${!songs ? 'text-gray-500' : 'cursor-pointer'}`} 
+                        onClick={handlePrevSong}>
                         <BsSkipStartFill size={25}/>
                     </span>
-                    <span className="cursor-pointer hover:text-[#eb1eff]" onClick={handleTogglePlayMusic}>
+                    <span 
+                        className="cursor-pointer hover:text-[#eb1eff]" 
+                        onClick={handleTogglePlayMusic}>
                         {isPlaying ? <BsPauseCircle size={35} /> : <BsPlayCircle size={35}/>}
                     </span>
-                    <span className="cursor-pointer" onClick={handleNextSong}>
+                    <span 
+                        className={`${!songs ? 'text-gray-500' : 'cursor-pointer'}`} 
+                        onClick={handleNextSong}>
                         <BsSkipEndFill size={25}/>
                     </span>
                     <span className="cursor-pointer" title="Bật phát lại tất cả">
@@ -141,8 +178,8 @@ const Player = () => {
                 <div className="w-full flex items-center justify-center gap-3 text-xs">
                     <div>{moment.utc(currentSeconds * 1000).format('mm:ss')}</div>
                     <div ref={trackRef} 
-                    className="relative h-[3px] w-3/5 rounded-l-full rounded-r-full bg-gray-500 hover:h-[6px] cursor-pointer"
-                    onClick={handleClickProgressBar}
+                        className="relative h-[3px] w-3/5 rounded-l-full rounded-r-full bg-gray-500 hover:h-[6px] cursor-pointer"
+                        onClick={handleClickProgressBar}
                     >
                         <div ref={thumbRef} id='thumb-progress' className='bg-white absolute top-0 left-0 bottom-0 rounded-l-full rounded-r-full'></div>
                     </div>

@@ -14,6 +14,7 @@ const Song = ({songData}) => {
       className='flex justify-between items-center p-[10px] border-t border-gray-400 hover:bg-main-100 cursor-pointer'
       onClick={() => {
         dispatch(actions.setCurrentSongId(songData?.encodeId))
+        dispatch(actions.playAlbum(true))
         dispatch(actions.play(true))
       }}
     >
