@@ -1,6 +1,6 @@
 import icons from "./icons";
 
-const { MdOutlineLibraryMusic, AiOutlineLineChart, BiDisc, AiOutlineStar } = icons;
+const { MdOutlineLibraryMusic, BiDisc, AiOutlineStar } = icons;
 const sidebarMenu = [
     {
         path: 'mymusic',
@@ -12,11 +12,6 @@ const sidebarMenu = [
         text: 'Khám phá',
         end: 'true',
         icons: <BiDisc size={'24px'}/>
-    },
-    {
-        path: 'zing-chart',
-        text: '@zingchart',
-        icons: <AiOutlineLineChart size={'24px'}/>
     },
     {
         path: 'top100',

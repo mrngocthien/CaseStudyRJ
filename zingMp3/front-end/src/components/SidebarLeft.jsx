@@ -16,7 +16,7 @@ const SidebarLeft = () => {
       <div onClick={() => navigate(path.HOME)} className='w-full h-[70px] px-[15px] py-[25px] flex justify-start items-center cursor-pointer'>
         <img src={logo} alt="logo" className='w-[120px] oh-10' />
       </div>
-      <div className='flex flex-col'>
+      <div className='flex flex-col text-sm'>
         {
           sidebarMenu.map(item => (
             <NavLink 
@@ -26,7 +26,7 @@ const SidebarLeft = () => {
               className={({isActive}) => isActive ? activedStyle : notActiveStyle}
             >
               {item.icons}
-              <span>{item.text}</span>
+              <span className='hover:text-green-300'>{item.text}</span>
             </NavLink>
           ))
         }

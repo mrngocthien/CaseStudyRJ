@@ -81,7 +81,7 @@ const Slider = () => {
       dispatch(actions.play(true))
     } else if (item.type === 4) {
       const albumPath = item?.link.split('.')[0];
-      console.log(item)
+      console.log('item' + item?.link)
       navigate(albumPath)
     }
   };
@@ -94,9 +94,7 @@ const Slider = () => {
             src={item.banner}
             alt="banner"
             onClick={() => handleClickedBanner(item)}
-            className={`slider-items flex-1 object-contain w-[30%] rounded-lg ${
-              index <= 2 ? "block" : "hidden"
-            }`}
+            className={`slider-items flex-1 object-contain w-[30%] cursor-pointer rounded-lg ${index <= 2 ? "block" : "hidden"}`}
           />
         );
       })}
