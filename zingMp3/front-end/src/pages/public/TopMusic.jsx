@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
 function TopMusic() {
-    const { categories } = useSelector((state) => state.topMusic);
-    console.log(categories)
+    const { topPlaylist } = useSelector(state => state.app)
+    console.log(topPlaylist)
     const navigate = useNavigate();
 
     const handleClickedBanner = (item) => {
@@ -16,14 +16,14 @@ function TopMusic() {
        <div className='px-[50px] relative flex flex-col gap-4'>
             <h1 className='text-gray-200 font-semibold text-3xl'>Nổi bật</h1>
             <div className='flex gap-5 flex-wrap'>
-                {categories?.map(item => {
+                {topPlaylist?.map(item => {
                     return(
                         <img
                             key={item.encodeId}
-                            src={item.thumbnail}
+                            src={item.thumbnailM}
                             alt='categories'
                             onClick={() => handleClickedBanner(item)}
-                            className='rounded-md cursor-pointer transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-200 hover:rounded-lg'
+                            className='w-[200px] rounded-md cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-500'
                         />
                     )
                 })}

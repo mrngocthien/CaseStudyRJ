@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as apis from "../apis";
 import icons from "../ultis/icons";
-import { useToggle } from "../hooks";
 import * as actions from '../store/actions'
 import { toast } from 'react-toastify'
 import moment from 'moment'
@@ -10,7 +9,8 @@ const {
   RxHeartFilled,
   RxHeart,
   BsThreeDots,
-  IoRepeat,
+  TbRepeat,
+  TbRepeatOnce,
   BsSkipEndFill,
   BsSkipStartFill,
   BsPlayCircle,
@@ -25,8 +25,9 @@ const Player = () => {
     const [songInfo, setSongInfo] = useState(null);
     const [audio, setAudio] = useState(new Audio());
     const [currentSeconds, setCurrentSeconds] = useState(0)
-    const [isShuffle, setIsShuffle] = useToggle();
-    const [liked, setLiked] = useToggle();
+    const [isShuffle, setIsShuffle] = useState(false)
+    const [repeatMode, setRepeatMode] = useState(0)
+    const [liked, setLiked] = useState(false)
     const thumbRef = useRef();
     const trackRef = useRef();
     const dispatch = useDispatch();
@@ -75,6 +76,23 @@ const Player = () => {
         }
     },[audio])
 
+    useEffect(() => {
+        const handleEnd = () => { 
+            console.log(`shuffle: ${isShuffle} - repeat: ${repeatMode}`)
+            if (isShuffle) {
+                handleShuffle();
+            } else if (repeatMode) {
+                repeatMode === 1 ? handleRepeatOne() : handleNextSong()
+            } else {
+                audio.pause()
+                dispatch(actions.play(false))
+            }
+        }
+        audio.addEventListener('ended', handleEnd)
+        return () => {
+            audio.removeEventListener('ended', handleEnd)
+        }
+    }, [audio, isShuffle, repeatMode])
 
     const handleTogglePlayMusic = () => { 
         if (isPlaying) {
@@ -86,12 +104,15 @@ const Player = () => {
         } 
     }
 
-    const handleLikeMusic = () => { 
-        setLiked();
+    const handleRepeatOne = () => {
+        // console.log('rp1')
+        audio.play();
     }
 
     const handleShuffle = () => { 
-        setIsShuffle();
+        const randomIndex = Math.round(Math.random() * songs?.length) - 1;
+        dispatch(actions.setCurrentSongId(songs[randomIndex].encodeId))
+        dispatch(actions.play(true))
     }
     const handleNextSong = () => { 
         if (songs) {
@@ -139,7 +160,9 @@ const Player = () => {
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="flex gap-4 pl-2">
-                    <span onClick={handleLikeMusic} className="cursor-pointer">
+                    <span 
+                        onClick={() => setLiked(prev => !prev)} 
+                        className="cursor-pointer">
                         {liked ? <RxHeartFilled size={18}/> : <RxHeart size={18} />}
                     </span>
                     <span className="cursor-pointer">
@@ -152,7 +175,7 @@ const Player = () => {
                     <span 
                         className={`cursor-pointer ${isShuffle && 'text-[#eb1eff]'}`}
                         title="Bật phát ngẫu nhiên"
-                        onClick={handleShuffle}
+                        onClick={() => setIsShuffle(prev => !prev)}
                     >
                         <IoShuffle size={25}/>
                     </span>
@@ -171,8 +194,12 @@ const Player = () => {
                         onClick={handleNextSong}>
                         <BsSkipEndFill size={25}/>
                     </span>
-                    <span className="cursor-pointer" title="Bật phát lại tất cả">
-                        <IoRepeat size={25}/>
+                    <span 
+                        className={`cursor-pointer ${repeatMode && 'text-[#eb1eff]'}`} 
+                        title="Bật phát lại tất cả"
+                        onClick={() => setRepeatMode(prev => prev === 2 ? 0 : (prev + 1))}
+                    >
+                        {repeatMode === 1 ? <TbRepeatOnce size={25} /> : <TbRepeat size={25}/>}
                     </span>
                 </div>
                 <div className="w-full flex items-center justify-center gap-3 text-xs">

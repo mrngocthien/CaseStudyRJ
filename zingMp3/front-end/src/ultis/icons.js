@@ -8,12 +8,13 @@ import { BsThreeDots,
     BsSkipEndFill, 
     BsPlayCircle, 
     BsPauseCircle, 
-    BsDot } from 'react-icons/bs'
+    BsDot
+    } from 'react-icons/bs'
 import { AiOutlineLineChart, AiOutlineStar } from 'react-icons/ai'
 import { BiDisc } from 'react-icons/bi'
-import { IoSearchOutline, IoRepeat, IoShuffle } from 'react-icons/io5'
+import { IoSearchOutline, IoShuffle } from 'react-icons/io5'
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
-
+import { TbRepeatOnce, TbRepeat } from 'react-icons/tb'
 import { HiOutlineMusicNote } from 'react-icons/hi'
 
 const icons = {
@@ -27,7 +28,8 @@ const icons = {
     RxHeart,
     RxHeartFilled,
     BsThreeDots,
-    IoRepeat,
+    TbRepeat,
+    TbRepeatOnce,
     BsSkipEndFill,
     BsSkipStartFill,
     BsPlayCircle,
