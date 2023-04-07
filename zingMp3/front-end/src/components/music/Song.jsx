@@ -2,13 +2,11 @@ import React, { memo } from 'react'
 import icons from '../../ultis/icons'
 import moment from 'moment'
 import * as actions from '../../store/actions'
-import { AudioPlayingBars } from "../../components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const { HiOutlineMusicNote } = icons
 
 const Song = ({songData}) => {
-  const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
   const dispatch = useDispatch();
     // console.log({songData})
   const handleClickSong = () => { 

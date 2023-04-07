@@ -10,13 +10,12 @@ import icons from "../../ultis/icons";
 
 const {
   BsPlayCircle,
-  BsPauseCircle,
 } = icons;
 
 
 const Album = () => {
   const { pid } = useParams();
-  const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
+  const { isPlaying, songs } = useSelector((state) => state.music);
   const [playlistData, setPlaylistData] = useState({});
   const dispatch = useDispatch();
 
@@ -30,7 +29,7 @@ const Album = () => {
       }
     }
     fetchDetailPlaylist();
-  }, [pid]);
+  }, [pid, dispatch]);
 
   const handleTogglePlayMusic = () => {
     dispatch(actions.setCurrentSongId(songs[0].encodeId))
