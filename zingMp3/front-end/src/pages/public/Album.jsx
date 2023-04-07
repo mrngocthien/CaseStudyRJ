@@ -56,7 +56,9 @@ const Album = () => {
                         <span>{moment.unix(playlistData?.contentLastUpdate).format("DD/MM/YYYY")}</span>
                     </span>
                     <span className='flex gap-2 items-center text-gray-400 text-xs'>{playlistData?.artistsNames}</span>
-                    <span className='flex gap-2 items-center text-gray-400 text-xs'>{`${Math.round(playlistData?.like / 1000)}K người yêu thích`}</span>
+                    <span className='flex gap-2 items-center text-gray-400 text-xs'>
+                      {`${playlistData?.like > 10000 ? Math.round(playlistData?.like / 10000) : Math.round(playlistData?.like / 1000)}K người yêu thích`}
+                    </span>
                 </div>
                 <button 
                   className="flex items-center gap-2 mt-2 bg-dark-violet hover:bg-light-violet hover:text-white text-gray-100 py-2 px-4 rounded-full"

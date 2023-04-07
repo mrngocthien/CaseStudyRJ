@@ -211,7 +211,7 @@ const Player = () => {
                         className="relative h-[3px] w-3/5 rounded-l-full rounded-r-full bg-gray-500 hover:h-[6px] cursor-pointer"
                         onClick={handleClickProgressBar}
                     >
-                        <div ref={thumbRef} id='thumb-progress' className='bg-white absolute top-0 left-0 bottom-0 rounded-l-full rounded-r-full'></div>
+                        <div ref={thumbRef} id='thumb-progress' className='bg-light-violet absolute top-0 left-0 bottom-0 rounded-l-full rounded-r-full'></div>
                     </div>
                     <div>{moment.utc(songInfo?.duration * 1000).format('mm:ss')}</div>
                 </div>
