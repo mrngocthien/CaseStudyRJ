@@ -6,4 +6,6 @@ export { default as Slider } from './Slider'
 export { default as Player } from './Player'
 export { default as SongList } from './music/SongList'
 export { default as Song } from './music/Song'
+export { default as AudioPlayingBars } from './music/AudioPlayingBars'
 export { default as Section } from './Section'
+

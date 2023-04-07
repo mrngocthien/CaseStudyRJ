@@ -14,11 +14,8 @@ module.exports = {
         'main-500': '#130c1C'
       },
       colors: {
-        'main-100': "#2f2739",
-        'main-200': '#221A2D',
-        'main-300': '#170F23',
-        'main-400': '#120822',
-        'main-500': '#130c1C'
+        'light-violet': "#eb1eff",
+        'dark-violet': "#940a8d"
       },
       keyframes: {
         'slide-right': {

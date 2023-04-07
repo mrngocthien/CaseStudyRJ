@@ -32,6 +32,7 @@ const Player = () => {
     const trackRef = useRef();
     const dispatch = useDispatch();
 
+    //for fetch audio data
     useEffect(() => {
         async function fetchDetailSong() {
             const [res1, res2] = await Promise.all([
@@ -61,6 +62,7 @@ const Player = () => {
         await audio.play()
     }
 
+    //for progress bar
     useEffect(() => {
         intervalId && clearInterval(intervalId)
         audio.pause()
@@ -76,6 +78,7 @@ const Player = () => {
         }
     },[audio])
 
+    //for shuffle and repeat button
     useEffect(() => {
         const handleEnd = () => { 
             console.log(`shuffle: ${isShuffle} - repeat: ${repeatMode}`)
@@ -173,7 +176,7 @@ const Player = () => {
             <div className="w-[40%] flex-auto flex flex-col gap-3 items-center justify-center py-2">
                 <div className="flex gap-6 items-center">
                     <span 
-                        className={`cursor-pointer ${isShuffle && 'text-[#eb1eff]'}`}
+                        className={`cursor-pointer ${isShuffle && 'text-light-violet'}`}
                         title="Bật phát ngẫu nhiên"
                         onClick={() => setIsShuffle(prev => !prev)}
                     >
@@ -185,7 +188,7 @@ const Player = () => {
                         <BsSkipStartFill size={25}/>
                     </span>
                     <span 
-                        className="cursor-pointer hover:text-[#eb1eff]" 
+                        className="cursor-pointer hover:text-light-violet" 
                         onClick={handleTogglePlayMusic}>
                         {isPlaying ? <BsPauseCircle size={35} /> : <BsPlayCircle size={35}/>}
                     </span>
@@ -195,7 +198,7 @@ const Player = () => {
                         <BsSkipEndFill size={25}/>
                     </span>
                     <span 
-                        className={`cursor-pointer ${repeatMode && 'text-[#eb1eff]'}`} 
+                        className={`cursor-pointer ${repeatMode && 'text-light-violet'}`} 
                         title="Bật phát lại tất cả"
                         onClick={() => setRepeatMode(prev => prev === 2 ? 0 : (prev + 1))}
                     >

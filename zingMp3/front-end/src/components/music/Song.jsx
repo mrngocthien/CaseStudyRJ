@@ -1,17 +1,18 @@
 import React, { memo } from 'react'
 import icons from '../../ultis/icons'
 import moment from 'moment'
-import { useDispatch } from 'react-redux'
 import * as actions from '../../store/actions'
+import { AudioPlayingBars } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
 
 const { HiOutlineMusicNote } = icons
 
 const Song = ({songData}) => {
-  const dispatch = useDispatch()
+  const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
+  const dispatch = useDispatch();
     // console.log({songData})
   const handleClickSong = () => { 
     dispatch(actions.setCurrentSongId(songData?.encodeId))
-    // dispatch(actions.setPlaylist(true))
     dispatch(actions.playAlbum(true))
     dispatch(actions.play(true))
   }
@@ -23,10 +24,13 @@ const Song = ({songData}) => {
       <div className='flex items-center gap-3 flex-1'>
           <span><HiOutlineMusicNote /></span>
           <img src={songData?.thumbnail} alt="thumbnailM" className='w-10 h-10 object-cover rounded-md' />
-          <span className='flex flex-col w-full'>
+            {/* <span className={`absolute ${isPlaying ? 'block' : 'hidden'}`}>
+              <AudioPlayingBars/>
+            </span> */}
+          <div className='flex flex-col w-full'>
               <span className='text-sm font-semibold'>{songData?.title?.length > 20 ? `${songData?.title?.slice(0, 20)}...` : songData?.title}</span>
               <span className='text-gray-400'>{songData?.artistsNames}</span>
-          </span>
+          </div>
       </div>
       <div className='flex-1 flex items-center justify-center'>
           {songData?.album?.title?.length > 25 ? `${songData?.album?.title?.slice(0, 25)}...` : songData?.album?.title}

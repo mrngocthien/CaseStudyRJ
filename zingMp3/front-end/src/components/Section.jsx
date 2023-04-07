@@ -6,12 +6,13 @@ import * as actions from '../store/actions'
 
 const Section = () => {
     const { newRelease } = useSelector(state => state.app)
+    console.log(newRelease)
     const dispatch = useDispatch();
+    
     const handleClickSong = (item) => { 
         dispatch(actions.setCurrentSongId(item.encodeId))
-        dispatch(actions.playAlbum(true))
         dispatch(actions.play(true))
-        // console.log(item.encodeId)
+        dispatch(actions.setPlaylist(true))
     }
     
     return (
