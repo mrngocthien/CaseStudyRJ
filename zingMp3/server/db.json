@@ -1,0 +1,25 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Peter",
+      "email": "peter@gmail.com",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.VpHkw7Culg0X_1kqpHDTDQHaHa&pid=Api&P=0",
+      "phone": "0912123110"
+    },
+    {
+      "id": 2,
+      "name": "Anime",
+      "email": "anime@gmail.com",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.VpHkw7Culg0X_1kqpHDTDQHaHa&pid=Api&P=0",
+      "phone": "0912123125"
+    },
+    {
+      "id": 3,
+      "name": "Tomoe",
+      "email": "tomoe@gmail.com",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.n5oelOkITZVSt10bB0XxRgHaHa&pid=Api&P=0",
+      "phone": "0912123121"
+    }
+  ]
+}

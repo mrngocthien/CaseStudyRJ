@@ -1,3 +1,4 @@
+/*======config for API Zing.mp3=======*/
 const path = require('path')
 const express = require("express")
 require('dotenv').config()
@@ -22,3 +23,5 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
     console.log(`Start server listen at http://localhost:${port}`)
 });
+
+
