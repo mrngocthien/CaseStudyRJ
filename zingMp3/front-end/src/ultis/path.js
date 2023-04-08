@@ -1,7 +1,8 @@
 const path = {
     PUBLIC: '/',
     HOME: '',
-    LOGIN: 'login',
+    SIGNIN: 'signin',
+    SIGNUP: 'signup',
     STAR: '*',
     MY_MUSIC: 'mymusic',
     ALBUM__TITLE__PID: 'album/:title/:pid',

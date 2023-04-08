@@ -15,7 +15,8 @@ module.exports = {
       },
       colors: {
         'light-violet': "#eb1eff",
-        'dark-violet': "#940a8d"
+        'dark-violet': "#940a8d",
+        'dark-green': "#00bc00"
       },
       keyframes: {
         'slide-right': {
