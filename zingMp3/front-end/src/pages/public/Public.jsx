@@ -1,8 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarLeft, SidebarRight, Player, Header } from "../../components";
-import Login from "./Signin";
-import Contacts from "./Example";
+import Signin from "./Signin";
 
 const Public = () => {
   const isLoggedin = false
@@ -30,8 +29,7 @@ const Public = () => {
     )
   } else {
     return (
-      <Login />
-      // <Contacts />
+      <Signin />
     );
   }
   

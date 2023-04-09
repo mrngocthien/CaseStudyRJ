@@ -9,10 +9,10 @@ Yup.setLocale({
     }
 })
 
-const signupFormValidation = Yup.object().shape({
+const FormValidation = Yup.object().shape({
     email: Yup.string().required().email(),
     password: Yup.string().required().min(4).max(12),
     file: Yup.string().required()
 });
 
-export default signupFormValidation;
+export default FormValidation;

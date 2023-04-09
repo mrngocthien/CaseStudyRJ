@@ -26,7 +26,7 @@ function App() {
 
             <Route path={path.STAR} element={<Home />} />
           </Route>
-          <Route path={path.SIGNIN} element={<Signin />} />
+          {/* <Route path={path.SIGNIN} element={<Signin />} /> */}
           <Route path={path.SIGNUP} element={<Signup />} />
         </Routes>
       </div>

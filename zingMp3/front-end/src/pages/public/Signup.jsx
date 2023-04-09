@@ -3,16 +3,16 @@ import logo from '../../assets/logo-dark.svg'
 import { NavLink } from 'react-router-dom'
 import path from '../../ultis/path'
 import { useFormik } from 'formik';
-import signupFormValidation from '../../dto/signupFrom-Validation-DTO'
+import FormValidation from '../../dto/fromValidation'
 
 function Signup() {
-  const {errors, values, handleSubmit, handleChange} = useFormik({
+  const { errors, values, handleSubmit, handleChange } = useFormik({
     initialValues: {
       email: '',
       password: '',
       file: ''
     },
-    validationSchema: signupFormValidation,
+    validationSchema: FormValidation,
     onSubmit: (values) => {
       console.log(values)
     },
@@ -29,7 +29,7 @@ function Signup() {
         <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <h1 className='font-bold text-dark-green text-lg'>FROM ĐĂNG KÝ</h1>
             <div className='flex flex-col gap-2'>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email<span className='text-red-500'> *</span></label>
               <input 
               type="email" placeholder='Nhập Email...'
               name='email'
@@ -40,7 +40,7 @@ function Signup() {
               {errors.email && <span className="text-red-400">{errors.email}</span>}
             </div>
             <div className='flex flex-col gap-2'>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password<span className='text-red-500'> *</span></label>
               <input 
               type="password" placeholder='Nhập Password...' 
               name='password'
@@ -51,7 +51,7 @@ function Signup() {
               {errors.password && <span className="text-red-400">{errors.password}</span>}
             </div>
             <div className='flex flex-col gap-2'>
-            <label htmlFor="file">Avatar</label>
+            <label htmlFor="file">Avatar<span className='text-red-500'> *</span></label>
               <input type="file" name='file' onChange={handleChange} className='file:rounded-md file:cursor-pointer file:py-1' />
               {errors.file && <span className="text-red-400">{errors.file}</span>}
             </div>
