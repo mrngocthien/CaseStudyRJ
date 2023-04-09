@@ -1,10 +1,16 @@
 import React from 'react'
 import icons from '../ultis/icons'
 import Search from './Search';
+import { useDispatch } from 'react-redux';
+import * as actions from '../store/actions'
 
 const { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } = icons;
 
 function Header() {
+    const dispatch = useDispatch();
+    const handleSignout = () => { 
+        dispatch(actions.getSignIn(false))
+    }
   return (
     <div className='flex justify-between w-full items-center'>
         <div className='flex gap-6 items-center w-full'>
@@ -16,8 +22,12 @@ function Header() {
                 <Search />
             </div>
         </div>
-        <div>
-            Login
+        <div className='flex w-1/4 items-center justify-end'>
+            <img src="" alt="" />
+            <button 
+                className=' bg-dark-violet hover:bg-light-violet hover:text-white text-gray-100 py-1 px-4 text-center rounded-full'
+                onClick={handleSignout}
+            >Đăng xuất</button>
         </div>
     </div>
   )

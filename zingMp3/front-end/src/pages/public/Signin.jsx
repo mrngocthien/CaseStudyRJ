@@ -3,13 +3,16 @@ import logo from '../../assets/logo-dark.svg'
 import { NavLink } from 'react-router-dom'
 import path from '../../ultis/path'
 import { Formik } from "formik";
+import { useDispatch } from 'react-redux';
+import * as actions from '../../store/actions'
+import { toast } from 'react-toastify'
 
 function Signin() {
     const REGEX = {
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
     };
-
     const [form, setForm] = useState({});
+    const dispatch = useDispatch();
 
     function handleChange(event) {
         setForm({
@@ -21,18 +24,43 @@ function Signin() {
     function handleValidate() {
         const errors = {};
         if (!form.email) {
-            errors.email = "Trường này không được bỏ trống";
+            errors.email = "Trường này không được bỏ trống !";
         } else if (!REGEX.email.test(form.email)) {
-            errors.email = "Đây không phải là một email";
+            errors.email = "Đây không phải là một email !";
         }
         if (!form.password) {
-            errors.password = "Trường này không được bỏ trống";
+            errors.password = "Trường này không được bỏ trống !";
         }
         return errors;
     }
 
-    function handleSubmit() {
-        console.log({email: form.email, password: form.password})
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log({email: form.email, password: form.password});
+        toast.success('Đăng nhập thành công !', {theme: "colored"});
+        dispatch(actions.getSignIn(true));
+
+        if (handleValidate()) {
+            fetch(`http://localhost:3000/users/${form.email}`)
+            .then((res) => {
+                return res.json()
+            })
+            .then((resp) => {
+                console.log(resp)
+                if(Object.keys(resp).length === 0) {
+                    toast.error('Tài khoản không tồn tại !')
+                } else {
+                    if (resp.password === form.password) {
+                        dispatch(actions.getSignIn(true))
+                    } else {
+                        toast.error('Vui lòng nhập đúng mật khẩu')
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
     }
     return (
         <div className='flex h-screen flex-col justify-center items-center bg-main-500 text-white'>

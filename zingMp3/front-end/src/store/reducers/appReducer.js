@@ -1,6 +1,7 @@
 import actionTypes from "../actions/actionTypes";
 
 const initState = {
+    signedIn: false,
     banner: [],
     newRelease: {},
     topPlaylist: []
@@ -17,6 +18,11 @@ const appReducer = (state = initState, action) => {
             return {
                 ...state,
                 topPlaylist: action.topMusicData?.find(item => item.title === 'Nổi bật')?.items || null
+            };
+        case actionTypes.GET_SIGNED_IN:
+            return {
+                ...state,
+                signedIn: action.flag
             };
         default:
             return state;

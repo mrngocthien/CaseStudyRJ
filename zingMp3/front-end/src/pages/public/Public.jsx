@@ -2,10 +2,13 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarLeft, SidebarRight, Player, Header } from "../../components";
 import Signin from "./Signin";
+import { useSelector } from "react-redux";
+
 
 const Public = () => {
-  const isLoggedin = false
-  if (isLoggedin) {
+  const { signedIn } = useSelector(state => state.app)
+  console.log(signedIn)
+  if (signedIn) {
     return (
       <div className="w-full h-screen relative flex flex-col bg-main-300 text-white overflow-x-hidden">
       <div className="w-full h-full flex flex-auto">
