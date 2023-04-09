@@ -10,7 +10,7 @@ import { BsThreeDots,
     BsPauseCircle, 
     BsDot
     } from 'react-icons/bs'
-import { AiOutlineLineChart, AiOutlineStar } from 'react-icons/ai'
+import { AiOutlineLineChart, AiOutlineStar, AiOutlineLogout } from 'react-icons/ai'
 import { BiDisc } from 'react-icons/bi'
 import { IoSearchOutline, IoShuffle } from 'react-icons/io5'
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
@@ -36,7 +36,8 @@ const icons = {
     IoShuffle,
     BsPauseCircle,
     HiOutlineMusicNote,
-    BsDot
+    BsDot,
+    AiOutlineLogout
 }
 
 export default icons;

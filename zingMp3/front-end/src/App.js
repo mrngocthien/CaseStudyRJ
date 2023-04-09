@@ -1,5 +1,5 @@
-import { Home, Signin, Signup, Public, Personal, Album, TopMusic } from './pages/public';
-import { ToastContainer, toast } from 'react-toastify';
+import { Home, SignIn, Public, Personal, Album, TopMusic } from './pages/public';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route} from 'react-router-dom';
 import path from './ultis/path';
@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     dispatch(actions.getHome())
     dispatch(actions.getTopMusic())
-  }, [])
+  }, [dispatch])
   return (
     <>
       <div className='App'>
@@ -26,8 +26,7 @@ function App() {
 
             <Route path={path.STAR} element={<Home />} />
           </Route>
-          {/* <Route path={path.SIGNIN} element={<Signin />} /> */}
-          <Route path={path.SIGNUP} element={<Signup />} />
+          <Route path={path.SIGNIN} element={<SignIn />} />
         </Routes>
       </div>
       <ToastContainer
