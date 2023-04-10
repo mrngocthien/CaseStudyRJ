@@ -6,7 +6,7 @@ const PageLoading = () => {
   return (
     <ProgressBar
         height="80"
-        width="80"
+        width="500"
         ariaLabel="progress-bar-loading"
         wrapperStyle={{}}
         wrapperClass="progress-bar-wrapper"

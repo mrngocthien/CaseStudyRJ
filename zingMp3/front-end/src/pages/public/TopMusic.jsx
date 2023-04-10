@@ -13,7 +13,7 @@ function TopMusic() {
         navigate(playlistPath)
     };
     return (
-       <div className='px-[50px] relative flex flex-col gap-4'>
+       <div className='px-[59px] relative flex flex-col gap-4'>
             <h1 className='text-gray-200 font-semibold text-3xl'>Nổi bật</h1>
             <div className='flex gap-5 flex-wrap'>
                 {topPlaylist?.map(item => {
