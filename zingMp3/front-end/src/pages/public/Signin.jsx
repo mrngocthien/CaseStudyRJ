@@ -2,12 +2,14 @@ import React from 'react'
 import logo from '../../assets/logo-dark.svg'
 import {useSignInWithGoogle} from 'react-firebase-hooks/auth'
 import { auth } from '../../config/firebase'
+import { toast } from 'react-toastify'
 
 const SignIn = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const signIn = () => {
     signInWithGoogle();
+    toast.success('Đăng nhập thành công !', {theme: "colored"})
   }
   return (
     <div className='flex h-screen flex-col gap-4 justify-center items-center bg-main-500 text-white'>

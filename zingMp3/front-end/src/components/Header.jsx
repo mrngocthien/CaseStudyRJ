@@ -4,16 +4,26 @@ import Search from './Search';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify'
+import * as actions from '../store/actions'
+import path from '../ultis/path';
 
 
 const { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight, AiOutlineLogout } = icons;
 
 function Header() {
     const [loggedInUser] = useAuthState(auth);
-    
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const handleLogout = async () => { 
         try {
-            await signOut(auth)
+            await signOut(auth);
+            dispatch(actions.play(false))
+            navigate(path.PUBLIC)
+            toast.success('Đăng xuất thành công !', {theme: "colored"})
         } catch (error) {
             console.log('error logging out', error)
         }

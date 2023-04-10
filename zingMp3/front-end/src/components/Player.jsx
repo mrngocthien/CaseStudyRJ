@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { AudioPlayingBars } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import * as apis from "../apis";
 import icons from "../ultis/icons";
@@ -58,18 +59,17 @@ const Player = () => {
         fetchDetailSong();
     }, [currentSongId]);
 
-    async function play() {
-        await audio.play()
-    }
-
     //for progress bar
     useEffect(() => {
         intervalId && clearInterval(intervalId)
         audio.pause()
         audio.load()
         if (isPlaying) {
+            async function play() {
+                await audio.play()
+            }
             play();
-            const thumbEl = document.getElementById('thumb-progress')
+            // const thumbEl = document.getElementById('thumb-progress')
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo.duration) / 100
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`
@@ -97,6 +97,10 @@ const Player = () => {
         }
     }, [audio, isShuffle, repeatMode])
 
+
+    const handleLiked = () => { 
+        setLiked(prev => !prev);
+    }
     const handleTogglePlayMusic = () => { 
         if (isPlaying) {
             audio.pause();
@@ -106,12 +110,9 @@ const Player = () => {
             dispatch(actions.play(true))
         } 
     }
-
     const handleRepeatOne = () => {
-        // console.log('rp1')
         audio.play();
     }
-
     const handleShuffle = () => { 
         const randomIndex = Math.round(Math.random() * songs?.length) - 1;
         dispatch(actions.setCurrentSongId(songs[randomIndex].encodeId))
@@ -158,13 +159,16 @@ const Player = () => {
                     alt="thumbnail"
                     className="w-16 h-16 object-cover rounded-md"
                 />
+                <span className={`absolute left-7 ${isPlaying ? 'block' : 'hidden'}`}>
+                    <AudioPlayingBars/>
+                </span>
                 <div className="flex flex-col">
                     <span className="font-semibold texy-sm">{songInfo?.title}</span>
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="flex gap-4 pl-2">
                     <span 
-                        onClick={() => setLiked(prev => !prev)} 
+                        onClick={handleLiked} 
                         className="cursor-pointer">
                         {liked ? <RxHeartFilled size={18}/> : <RxHeart size={18} />}
                     </span>

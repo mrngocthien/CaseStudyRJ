@@ -89,7 +89,7 @@ const Slider = () => {
     }
   };
   return (
-    <div className="flex w-full gap-7 overflow-hidden px-[59px] pt-8">
+    <div className="flex w-full gap-7 overflow-hidden pt-8">
       {banner?.map((item, index) => {
         return (
           <img

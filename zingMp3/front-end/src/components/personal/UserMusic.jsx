@@ -23,13 +23,13 @@ const UserMusic = () => {
             className={`hover:text-dark-green cursor-pointer ${myFavoriteMusic && 'text-dark-green'}`}
               onClick={handleFavoriteMusic}
             >
-            YEU THICH
+            YÊU THÍCH
             </span>
             <span 
             className={`hover:text-dark-green cursor-pointer ${myUploadMusic && 'text-dark-green'}`}
               onClick={handleUploadMusic}
             >
-            DA TAI LEN
+            ĐÃ TẢI LÊN
             </span>
         </div>
         <span className='bg-dark-green h-[1px]'></span>
