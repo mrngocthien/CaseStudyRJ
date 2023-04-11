@@ -9,7 +9,7 @@ import * as actions from '../../store/actions'
 import icons from "../../ultis/icons";
 
 const {
-  BsPlayCircle,
+  BsPlayFill,
 } = icons;
 
 
@@ -38,15 +38,20 @@ const Album = () => {
   return (
     <div className='flex gap-8 w-full h-[85%] px-[59px] pt-5'>
             <div className=' w-1/3 flex flex-col items-center gap-2'>
-                <div className="flex flex-col items-center justify-center relative">
+                <div className="flex flex-col items-center justify-center relative text-white">
                   <img 
                     src={playlistData?.thumbnailM} 
                     alt="thumbnail" 
-                    className={`w-full object-contain ${isPlaying ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'} shadow-md`} 
+                    className={`w-full object-contain hover:bg-overlay-30 ${isPlaying ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'}`} 
                   />
-                  <span className={`absolute ${isPlaying ? 'block' : 'hidden'}`}>
-                    <AudioPlayingBars/>
-                  </span>
+                  <div 
+                    className="absolute top-0 left-0 right-0 bottom-0 hover:bg-overlay-30 flex items-center justify-center cursor-pointer"
+                    onClick={handleTogglePlayMusic}
+                  >
+                    <span className="p-3 border rounded-full">
+                      {isPlaying ? <AudioPlayingBars /> : <BsPlayFill size={30}/>}
+                    </span>
+                  </div>
                 </div>
                 <div className='flex flex-col items-center gap-1'>
                     <h3 className='text-[20px] font-bold text-gray-100 text-center'>{playlistData?.title}</h3>
@@ -63,7 +68,7 @@ const Album = () => {
                   className="flex items-center gap-2 mt-2 bg-dark-violet hover:bg-light-violet hover:text-white text-gray-100 py-2 px-4 rounded-full"
                   onClick={handleTogglePlayMusic}
                 >
-                  <BsPlayCircle/>
+                  <BsPlayFill className="rounded-full border p-1" size={30}/>
                   <span>PHÁT ALBUM</span>
                 </button>
             </div>

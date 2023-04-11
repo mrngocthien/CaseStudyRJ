@@ -14,5 +14,6 @@ export { default as UploadList} from './personal/UploadList';
 export { default as SongList } from './music/SongList'
 export { default as Song } from './music/Song'
 export { default as AudioPlayingBars } from './music/audioPlayingBars'
+export { default as LoadingSong } from './music/loadingSong'
 
 

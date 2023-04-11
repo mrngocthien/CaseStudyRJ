@@ -33,8 +33,8 @@ function Header() {
         <div className='flex justify-between w-full items-center'>
             <div className='flex gap-6 items-center w-full'>
                 <div className='flex gap-6 text-gray-400'>
-                    <span><MdOutlineKeyboardDoubleArrowLeft size={24}/></span>
-                    <span><MdOutlineKeyboardDoubleArrowRight size={24}/></span>
+                    <span className='hover:text-white cursor-pointer'><MdOutlineKeyboardDoubleArrowLeft size={30}/></span>
+                    <span className='hover:text-white cursor-pointer'><MdOutlineKeyboardDoubleArrowRight size={30}/></span>
                 </div>
                 <div className='w-1/2'>
                     <Search />

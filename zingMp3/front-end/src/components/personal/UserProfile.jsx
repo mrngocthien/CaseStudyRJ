@@ -5,7 +5,6 @@ import { profileInfo } from './profileInfo';
 
 const UserProfile = () => {
     const [loggedInUser] = useAuthState(auth);
-    console.log(loggedInUser.photoURL)
     return (
         <div className='flex items-center gap-4'>
             <img src={loggedInUser.photoURL ? loggedInUser.photoURL : profileInfo.avatarURL} alt=""  className='w-1/6 rounded-full'/>

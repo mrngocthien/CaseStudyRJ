@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { AudioPlayingBars } from "../components";
+import { AudioPlayingBars, LoadingSong } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import * as apis from "../apis";
 import icons from "../ultis/icons";
@@ -14,9 +14,11 @@ const {
   TbRepeatOnce,
   BsSkipEndFill,
   BsSkipStartFill,
-  BsPlayCircle,
+  BsPlayFill,
   IoShuffle,
-  BsPauseCircle,
+  BsPauseFill,
+  GoMute, 
+  GoUnmute
 } = icons;
 
 var intervalId;
@@ -28,18 +30,23 @@ const Player = () => {
     const [currentSeconds, setCurrentSeconds] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
     const [repeatMode, setRepeatMode] = useState(0)
+    const [muted, setMuted] = useState(false)
+    const [volumeValue, setVolumeValue] = useState(100)
     const [liked, setLiked] = useState(false)
+    const [isLoadingSong, setIsLoadingSong] = useState(false)
     const thumbRef = useRef();
     const trackRef = useRef();
     const dispatch = useDispatch();
 
-    //for fetch audio data
+    //for fetch audio source
     useEffect(() => {
         async function fetchDetailSong() {
+            setIsLoadingSong(true)
             const [res1, res2] = await Promise.all([
                 apis.apiGetDetailSong(currentSongId),
                 apis.apiGetSong(currentSongId)
             ]);
+            setIsLoadingSong(false)
             if (res1.data.err === 0) {
                 setSongInfo(res1.data.data);
                 setCurrentSeconds(0)
@@ -101,6 +108,19 @@ const Player = () => {
     const handleLiked = () => { 
         setLiked(prev => !prev);
     }
+    const handleMuted = () => { 
+        setMuted(prev => !prev)
+    }
+
+    const handleChangeVolume = (e) => { 
+        setVolumeValue(e.target.value)
+        audio.volume = volumeValue / 100;
+        if (volumeValue < 4) {
+            setMuted(true)
+        } else {
+            setMuted(false)
+        }
+    }
     const handleTogglePlayMusic = () => { 
         if (isPlaying) {
             audio.pause();
@@ -152,16 +172,18 @@ const Player = () => {
     }
 
     return (
-        <div className="bg-main-100 h-full px-5 py-2 flex">
+        <div className="bg-main-100 h-full px-5 flex">
             <div className="w-[30%] flex-auto gap-3 flex items-center">
-                <img
-                    src={songInfo?.thumbnail}
-                    alt="thumbnail"
-                    className="w-16 h-16 object-cover rounded-md"
-                />
-                <span className={`absolute left-7 ${isPlaying ? 'block' : 'hidden'}`}>
-                    <AudioPlayingBars/>
-                </span>
+                <div className="relative">
+                    <img
+                        src={songInfo?.thumbnail}
+                        alt="thumbnail"
+                        className="w-16 h-16 object-cover rounded-md"
+                    />
+                    <span className={`absolute flex items-center justify-center top-0 left-0 right-0 bottom-0 ${isPlaying ? 'block' : 'hidden'}`}>
+                        <AudioPlayingBars/>
+                    </span>
+                </div>
                 <div className="flex flex-col">
                     <span className="font-semibold texy-sm">{songInfo?.title}</span>
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
@@ -177,7 +199,7 @@ const Player = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-[40%] flex-auto flex flex-col gap-3 items-center justify-center py-2">
+            <div className="w-[40%] flex-auto flex flex-col gap-2 items-center justify-center py-2">
                 <div className="flex gap-6 items-center">
                     <span 
                         className={`cursor-pointer ${isShuffle && 'text-light-violet'}`}
@@ -192,9 +214,9 @@ const Player = () => {
                         <BsSkipStartFill size={25}/>
                     </span>
                     <span 
-                        className="cursor-pointer hover:text-light-violet" 
-                        onClick={handleTogglePlayMusic}>
-                        {isPlaying ? <BsPauseCircle size={35} /> : <BsPlayCircle size={35}/>}
+                        className="cursor-pointer p-2 border border-white rounded-full hover:text-light-violet hover:border-light-violet" 
+                        onClick={handleTogglePlayMusic}> 
+                        {isLoadingSong ? <LoadingSong /> : (isPlaying ? <BsPauseFill size={25} /> : <BsPlayFill size={25}/>)}
                     </span>
                     <span 
                         className={`${!songs ? 'text-gray-500' : 'cursor-pointer'}`} 
@@ -220,7 +242,20 @@ const Player = () => {
                     <div>{moment.utc(songInfo?.duration * 1000).format('mm:ss')}</div>
                 </div>
             </div>
-            <div className="w-[30%] flex-auto">Volume Controller</div>
+            <div className="w-[30%] flex-auto flex gap-2 items-center justify-end">
+                <span 
+                    className="cursor-pointer"
+                    onClick={handleMuted}
+                >
+                    {muted ? <GoMute /> : <GoUnmute />}
+                </span>
+                <input 
+                    type="range" name="volume" id="volume-control" step={1} min={0} max={100}
+                    className="h-1 cursor-pointer"
+                    value={volumeValue}
+                    onChange={handleChangeVolume}
+                />
+            </div>
         </div>
     );
 };

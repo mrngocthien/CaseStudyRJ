@@ -5,8 +5,8 @@ import { Audio } from  'react-loader-spinner'
 const AudioPlayingBars = () => {
   return (
     <Audio
-      height="50"
-      width="50"
+      height="30"
+      width="30"
       color="#ffff"
       ariaLabel="audio-loading"
       wrapperStyle={{}}
