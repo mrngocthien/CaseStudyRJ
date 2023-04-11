@@ -82,9 +82,6 @@ module.exports = {
       flex: {
         '4': '4 4 0%'
       }
-    },
-    screens: {
-      '1600': '1600px'
     }
   },
   plugins: [],

@@ -1,4 +1,4 @@
-import { Home, SignIn, Public, Personal, Album, TopMusic } from './pages/public';
+import { Home, SignIn, SignInClassical, Public, Personal, Album, TopMusic } from './pages/public';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route} from 'react-router-dom';
@@ -27,6 +27,7 @@ function App() {
             <Route path={path.STAR} element={<Home />} />
           </Route>
           <Route path={path.SIGNIN} element={<SignIn />} />
+          <Route path={path.SIGNIN_CLASSICAL} element={<SignInClassical />} />
         </Routes>
       </div>
       <ToastContainer

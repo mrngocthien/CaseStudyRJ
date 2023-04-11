@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { SidebarLeft, SidebarRight, Player, Header, Loading } from "../../components";
+import { SidebarLeft, Player, Header, Loading } from "../../components";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../config/firebase';
 import SignIn from "./SignIn";
@@ -25,9 +25,6 @@ const Public = () => {
             <Header />
           </div>
           <Outlet />
-        </div>
-        <div className="w-[329px] hidden 1600:flex flex-none animate-slide-left">
-          <SidebarRight />
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-[90px]">

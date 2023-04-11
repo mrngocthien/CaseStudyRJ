@@ -1,5 +1,6 @@
 export { default as Home } from './Home'
 export { default as SignIn } from './SignIn'
+export { default as SignInClassical } from './SignInClassical'
 export { default as Public } from './Public'
 export { default as Personal } from './Personal'
 export { default as Album } from './Album'

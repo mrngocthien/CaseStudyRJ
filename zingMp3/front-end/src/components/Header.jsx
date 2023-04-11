@@ -23,7 +23,7 @@ function Header() {
             await signOut(auth);
             dispatch(actions.play(false))
             navigate(path.PUBLIC)
-            toast.success('Đăng xuất thành công !', {theme: "colored"})
+            toast.success('Đăng xuất !')
         } catch (error) {
             console.log('error logging out', error)
         }

@@ -2,7 +2,7 @@ const path = {
     PUBLIC: '/',
     HOME: '',
     SIGNIN: 'signin',
-    SIGNUP: 'signup',
+    SIGNIN_CLASSICAL: 'signinclassical',
     STAR: '*',
     MY_MUSIC: 'mymusic',
     ALBUM__TITLE__PID: 'album/:title/:pid',
