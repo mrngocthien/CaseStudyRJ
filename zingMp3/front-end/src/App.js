@@ -1,4 +1,4 @@
-import { Home, SignIn, SignInClassical, Public, Personal, Album, TopMusic } from './pages/public';
+import { Home, SignIn, SignInClassical, Public, Personal, Album, TopMusic, SignUp } from './pages/public';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route} from 'react-router-dom';
@@ -28,11 +28,12 @@ function App() {
           </Route>
           <Route path={path.SIGNIN} element={<SignIn />} />
           <Route path={path.SIGNIN_CLASSICAL} element={<SignInClassical />} />
+          <Route path={path.SIGNUP} element={<SignUp />} />
         </Routes>
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

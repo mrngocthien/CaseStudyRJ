@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify'
 import * as actions from '../store/actions'
 import path from '../ultis/path';
+import { profileInfo } from './personal/profileInfo';
 
 
 const { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight, AiOutlineLogout } = icons;
@@ -41,7 +42,7 @@ function Header() {
             </div>
             <div className='flex w-1/4 gap-2 items-center justify-end'>
                 <img 
-                    src={loggedInUser?.photoURL || ''} 
+                    src={loggedInUser?.photoURL || profileInfo.avatarURL} 
                     alt=""
                     className='w-1/5 rounded-full cursor-pointer' 
                 />

@@ -3,16 +3,19 @@ import logo from '../../assets/logo-dark.svg'
 import { Formik } from "formik";
 import { auth } from '../../config/firebase';
 import { toast } from 'react-toastify'
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import path from '../../ultis/path'
 
-const SignInClassical = () => {
+const SignUp = () => {
     const REGEX = {
         email: /^[a-zA-Z0-9._%+-]+@gmail\.com$/
     };
 
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    });
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -38,7 +41,7 @@ const SignInClassical = () => {
     const handleSubmit = () => {
         const { email, password } = form;
         console.log(email, password)
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential)
             navigate(path.PUBLIC)
@@ -48,6 +51,7 @@ const SignInClassical = () => {
         })
         toast.success('Đăng nhập thành công !', {theme: "colored"})
     }
+
     
     return (
         <div className='flex h-screen flex-col gap-4 justify-center items-center bg-main-500 text-white'>
@@ -56,7 +60,7 @@ const SignInClassical = () => {
                 alt="mp3.zing-logo"
                 className='w-1/4' 
             />
-            <h1 className='font-bold text-light-violet'>FORM ĐĂNG NHẬP</h1>
+            <h1 className='font-bold text-dark-green'>FORM ĐĂNG KÝ</h1>
             <Formik
                 initialValues={form}
                 validate={handleValidate}
@@ -92,13 +96,13 @@ const SignInClassical = () => {
                         <button 
                             type="submit"
                             onClick={handleSubmit}
-                            className='w-1/2 m-auto p-1 bg-dark-violet rounded-md hover:bg-light-violet'
-                        >ĐĂNG NHẬP</button>
+                            className='w-1/2 m-auto p-1 bg-dark-green rounded-md hover:bg-dark-violet'
+                        >ĐĂNG KÝ</button>
                         <button 
                             type="submit"
                             onClick={() => navigate(path.PUBLIC)}
-                            className='w-1/2 m-auto p-1 rounded-md  bg-dark-orange rounded-md hover:bg-red-700'
-                        >QUAY LẠI</button>
+                            className='w-1/2 m-auto p-1 bg-dark-orange rounded-md hover:bg-red-700'
+                        >HỦY ĐĂNG KÝ</button>
                     </div>
                 </form>
                 )}
@@ -107,4 +111,4 @@ const SignInClassical = () => {
     )
 }
 
-export default SignInClassical
+export default SignUp

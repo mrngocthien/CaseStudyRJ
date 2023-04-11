@@ -19,6 +19,11 @@ const SignIn = () => {
   const signInClassical = () => { 
     navigate(path.SIGNIN_CLASSICAL)
   }
+
+  const handleSignUp = () => { 
+    navigate(path.SIGNUP)
+  }
+
   return (
     <div className='flex h-screen flex-col gap-4 justify-center items-center bg-main-500 text-white'>
       <img 
@@ -37,6 +42,12 @@ const SignIn = () => {
         onClick={signInClassical}
       >
         ĐĂNG NHẬP BẰNG EMAIL
+      </button>
+      <button 
+        className='w-1/5 gap-2 bg-dark-green hover:bg-dark-orange hover:text-white text-gray-100 py-1 px-4 text-center rounded-full'
+        onClick={handleSignUp}
+      >
+        TẠO TÀI KHOẢN GMAIL MỚI
       </button>
     </div>
   )
