@@ -14,7 +14,8 @@ const SignUp = () => {
 
     const [form, setForm] = useState({
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
     const navigate = useNavigate();
 
@@ -34,6 +35,11 @@ const SignUp = () => {
         }
         if (!form.password) {
             errors.password = "Trường này bắt buộc";
+        }
+        if (!form.confirmPassword) {
+            errors.confirmPassword = "Trường này bắt buộc";
+        } else if (form.confirmPassword != form.password) {
+            errors.confirmPassword = "Vui lòng lặp lại mật khẩu ở trên"
         }
         return errors;
     }
@@ -92,6 +98,18 @@ const SignUp = () => {
                                 className='text-gray-700 rounded-sm p-1'
                             />
                             {errors.password && <span className="text-red-400">{errors.password}</span>}
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <label>Xác Nhận Mật khẩu <span className='text-red-400'>*</span></label>
+                            <input
+                                type="password"
+                                name="confirmPassword"
+                                value={form.confirmPassword || ""}
+                                onChange={(e) => handleChange(e)}
+                                placeholder='Nhập lại mật khẩu...'
+                                className='text-gray-700 rounded-sm p-1'
+                            />
+                            {errors.confirmPassword && <span className="text-red-400">{errors.confirmPassword}</span>}
                         </div>
                         <button 
                             type="submit"

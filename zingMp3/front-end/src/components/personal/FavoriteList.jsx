@@ -1,8 +1,11 @@
 import React from 'react'
+import SongList from '../music/SongList'
 
 const FavoriteList = () => {
   return (
-    <div>FavoriteList</div>
+    <div>
+      <SongList />
+    </div>
   )
 }
 

@@ -9,7 +9,7 @@ const { HiOutlineMusicNote } = icons
 
 const Section = () => {
     const { newRelease } = useSelector(state => state.app)
-    console.log(newRelease)
+    // console.log(newRelease)
     const dispatch = useDispatch();
     
     const handleClickSong = (item) => { 

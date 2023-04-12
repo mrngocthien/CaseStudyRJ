@@ -49,11 +49,12 @@ const Player = () => {
             setIsLoadingSong(false)
             if (res1.data.err === 0) {
                 setSongInfo(res1.data.data);
-                console.log(res1.data.data)
+                // console.log(res1.data.data)
                 setCurrentSeconds(0)
             }
             if (res2.data.err === 0) {
                 audio.pause();
+                // console.log(res2?.data?.data[128])
                 setAudio(new Audio(res2?.data?.data[128]));
             } else {
                 audio.pause()

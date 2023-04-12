@@ -4,7 +4,7 @@ import * as apis from '../../apis';
 export const getTopMusic = () => async (dispatch) => {
     try {
         const res = await apis.getTopMusicData();
-        console.log(res.data.data[0])
+        // console.log(res.data.data[0])
         if (res.data.err === 0) {
             dispatch({
                 type: actionTypes.GET_TOP_MUSIC,

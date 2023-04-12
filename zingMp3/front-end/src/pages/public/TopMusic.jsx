@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 function TopMusic() {
     const { topPlaylist } = useSelector(state => state.app)
-    console.log(topPlaylist)
+    // console.log(topPlaylist)
     const navigate = useNavigate();
 
     const handleClickedBanner = (item) => {
         const playlistPath = item?.link?.split('.')[0];
-        console.log(item?.link)
+        // console.log(item?.link)
         navigate(playlistPath)
     };
     return (

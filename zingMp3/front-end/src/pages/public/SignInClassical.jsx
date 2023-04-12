@@ -12,7 +12,10 @@ const SignInClassical = () => {
         email: /^[a-zA-Z0-9._%+-]+@gmail\.com$/
     };
 
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    });
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -32,6 +35,7 @@ const SignInClassical = () => {
         if (!form.password) {
             errors.password = "Trường này bắt buộc";
         }
+        
         return errors;
     }
     

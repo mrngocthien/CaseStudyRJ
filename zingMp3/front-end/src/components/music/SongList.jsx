@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const { BsDot } = icons
 
+//received totalDuration prop from Album page
 const SongList = ({ totalDuration }) => {
     const { songs } = useSelector(state => state.music)
     return (
