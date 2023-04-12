@@ -17,7 +17,7 @@ const UserMusic = () => {
   }
 
   return (
-    <div className='flex flex-col gap-4 font-semibold pt-8'>
+    <div className='h-screen flex flex-col gap-4 font-semibold pt-8'>
       <div className='flex gap-4'>
         <span 
         className={`hover:text-dark-green cursor-pointer ${myRecentList && 'text-dark-green'}`}
@@ -33,9 +33,12 @@ const UserMusic = () => {
         </span>
       </div>
       <span className='bg-dark-green h-[1px]'></span>
-      <div>
-          {myRecentList ? <RecentList/> : <UploadList />}
-      </div>
+      <Scrollbars>
+        <div className='pb-80'>
+            {myRecentList ? <RecentList/> : <UploadList />}
+        </div>
+      </Scrollbars>
+      
     </div>
   )
 }

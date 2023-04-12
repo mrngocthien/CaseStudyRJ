@@ -79,7 +79,7 @@ const Player = () => {
                 await audio.play()
             }
             play();
-            // const thumbEl = document.getElementById('thumb-progress')
+            const thumbEl = document.getElementById('thumb-progress')
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo.duration) / 100
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`

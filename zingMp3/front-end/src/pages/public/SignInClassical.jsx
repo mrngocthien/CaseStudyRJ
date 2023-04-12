@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import logo from '../../assets/logo-dark.svg'
 import { Formik } from "formik";
 import { auth } from '../../config/firebase';
-import { toast } from 'react-toastify'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import path from '../../ultis/path'
@@ -50,7 +49,6 @@ const SignInClassical = () => {
         .catch((error) => {
             console.log(error)
         })
-        toast.success('Đăng nhập thành công !', {theme: "colored"})
     }
     
     return (

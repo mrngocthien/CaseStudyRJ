@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import SongList from '../music/SongList';
-
+import React from 'react'
+import { SongList } from '../../components';
 
 const RecentList = () => {
+  
   return (
-    <div className='overflow-y-scroll'>
+    <div>
       <SongList />
     </div>
     

@@ -6,7 +6,6 @@ import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify'
 import * as actions from '../store/actions'
 import path from '../ultis/path';
 import { profileInfo } from './personal/profileInfo';
@@ -24,7 +23,6 @@ function Header() {
             await signOut(auth);
             dispatch(actions.play(false))
             navigate(path.PUBLIC)
-            toast.success('Đăng xuất !')
         } catch (error) {
             console.log('error logging out', error)
         }
@@ -41,11 +39,14 @@ function Header() {
                 </div>
             </div>
             <div className='flex w-1/4 gap-2 items-center justify-end'>
-                <img 
-                    src={loggedInUser?.photoURL || profileInfo.avatarURL} 
-                    alt=""
-                    className='w-1/5 rounded-full cursor-pointer' 
-                />
+                <div className='w-1/5' title={loggedInUser.email}>
+                    <img 
+                        src={loggedInUser?.photoURL || profileInfo.avatarURL} 
+                        alt=""
+                        className='w-full rounded-full cursor-pointer'
+                        onClick={() => navigate(path.MY_MUSIC)} 
+                    />
+                </div>
                 <button 
                     className=' bg-dark-violet hover:bg-dark-orange hover:text-white py-1 px-4 text-center text-xl rounded-full'
                     onClick={handleLogout}

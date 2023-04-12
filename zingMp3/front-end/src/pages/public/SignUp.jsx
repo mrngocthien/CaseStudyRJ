@@ -55,7 +55,7 @@ const SignUp = () => {
         .catch((error) => {
             console.log(error)
         })
-        toast.success('Đăng nhập thành công !', {theme: "colored"})
+        toast.success('Đăng ký thành công !', {theme: "colored"})
     }
 
     

@@ -2,7 +2,6 @@ import React from 'react'
 import logo from '../../assets/logo-dark.svg'
 import {useSignInWithGoogle} from 'react-firebase-hooks/auth'
 import { auth } from '../../config/firebase'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultis/path'
 
@@ -13,7 +12,6 @@ const SignIn = () => {
   const signIn = (e) => {
     e.preventDefault();
     signInWithGoogle();
-    toast.success('Đăng nhập thành công !', {theme: "colored"})
   }
 
   const signInClassical = () => { 
