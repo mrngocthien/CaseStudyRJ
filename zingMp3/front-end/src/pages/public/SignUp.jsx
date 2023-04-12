@@ -38,7 +38,7 @@ const SignUp = () => {
         }
         if (!form.confirmPassword) {
             errors.confirmPassword = "Trường này bắt buộc";
-        } else if (form.confirmPassword != form.password) {
+        } else if (form.confirmPassword !== form.password) {
             errors.confirmPassword = "Vui lòng lặp lại mật khẩu ở trên"
         }
         return errors;

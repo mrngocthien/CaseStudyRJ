@@ -25,6 +25,7 @@ var intervalId;
 
 const Player = () => {
     const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
+
     const [songInfo, setSongInfo] = useState(null);
     const [audio, setAudio] = useState(new Audio());
     const [currentSeconds, setCurrentSeconds] = useState(0)
@@ -54,7 +55,7 @@ const Player = () => {
             }
             if (res2.data.err === 0) {
                 audio.pause();
-                // console.log(res2?.data?.data[128])
+                // console.log(res2?.data?.data)
                 setAudio(new Audio(res2?.data?.data[128]));
             } else {
                 audio.pause()
@@ -106,9 +107,9 @@ const Player = () => {
         }
     }, [audio, isShuffle, repeatMode])
 
-
     const handleLiked = () => { 
         setLiked(prev => !prev);
+        
     }
     const handleMuted = () => { 
         setMuted(prev => !prev)

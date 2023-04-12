@@ -8,7 +8,7 @@ export { default as Section } from './Section'
 
 export { default as UserProfile} from './personal/UserProfile';
 export { default as UserMusic} from './personal/UserMusic';
-export { default as FavoriteList} from './personal/FavoriteList';
+export { default as RecentList} from './personal/RecentList';
 export { default as UploadList} from './personal/UploadList';
 
 export { default as SongList } from './music/SongList'

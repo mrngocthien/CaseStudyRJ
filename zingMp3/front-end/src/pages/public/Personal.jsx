@@ -16,7 +16,7 @@ function Personal() {
   }
 
   return (
-    <div className='flex flex-col gap-4 font-semibold px-[59px] pt-8'>
+    <div className='h-[90%] overflow-y-hidden flex flex-col gap-4 font-semibold px-[59px] pt-8'>
       <div className='flex gap-4'>
         <span 
           className={`hover:text-light-violet cursor-pointer ${userInfo && 'text-light-violet'}`}
