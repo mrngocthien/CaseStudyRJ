@@ -7,6 +7,8 @@ export { default as Player } from './Player'
 export { default as Loading } from './Loading'
 export { default as Section } from './Section'
 export { default as Button } from './Button'
+export { default as WeekChartExplorer } from './WeekChartExplorer'
+export { default as TrendingArtist } from './TrendingArtist'
 
 export { default as UserProfile} from './personal/UserProfile';
 export { default as UserMusic} from './personal/UserMusic';

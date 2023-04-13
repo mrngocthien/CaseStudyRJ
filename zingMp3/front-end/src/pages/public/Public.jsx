@@ -25,7 +25,7 @@ const Public = () => {
           <div className='h-[70px] px-[59px] flex items-center'>
             <Header />
           </div>
-          <Outlet />
+            <Outlet />
         </div>
         {isShowRightSidebar && 
           <div className="w-[300px] flex-none animate-slide-left">

@@ -143,7 +143,13 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     currentSongIndex = index
                 }
             })
-            dispatch(actions.setCurrentSongId(songs[currentSongIndex + 1].encodeId))
+            if (currentSongIndex === songs.length -1) {
+                dispatch(actions.setCurrentSongId(songs[0].encodeId))
+
+            } else {
+                dispatch(actions.setCurrentSongId(songs[currentSongIndex + 1].encodeId))
+            }
+            
             dispatch(actions.play(true))
         }    
     }

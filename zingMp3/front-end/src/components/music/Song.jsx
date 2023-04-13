@@ -23,9 +23,6 @@ const Song = ({songData}) => {
       <div className='flex items-center gap-3 flex-1'>
           <span><HiOutlineMusicNote /></span>
           <img src={songData?.thumbnail} alt="thumbnailM" className='w-10 h-10 object-cover rounded-md' />
-            {/* <span className={`absolute ${isPlaying ? 'block' : 'hidden'}`}>
-              <AudioPlayingBars/>
-            </span> */}
           <div className='flex flex-col w-full'>
               <span className='text-sm font-semibold'>{songData?.title?.length > 20 ? `${songData?.title?.slice(0, 20)}...` : songData?.title}</span>
               <span className='text-gray-400'>{songData?.artistsNames}</span>

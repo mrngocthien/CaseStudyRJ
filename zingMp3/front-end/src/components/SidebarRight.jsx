@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import icons from "../ultis/icons";
 import { useSelector } from 'react-redux'
+import SongItem from './music/SongItem';
 
 const {
   RiDeleteBinFill 
@@ -26,7 +27,15 @@ const SidebarRight = () => {
         </div>
         <span className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'><RiDeleteBinFill size={20}/></span>
       </div>  
-      <div>body</div>
+      <div className='w-full flex flex-col'>
+        <SongItem 
+          thumbnail={currentSongData.thumbnail}
+          title={currentSongData.title}
+          artistsNames={currentSongData.artistsNames}
+          releaseDate={currentSongData.releaseDate}
+          sid={currentSongData.encodeId}
+        />
+      </div>
     </div>
   )
 }
