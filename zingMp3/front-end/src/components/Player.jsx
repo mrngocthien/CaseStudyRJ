@@ -7,23 +7,15 @@ import * as actions from '../store/actions'
 import { toast } from 'react-toastify'
 import moment from 'moment'
 const {
-  RxHeartFilled,
-  RxHeart,
-  BsThreeDots,
-  TbRepeat,
-  TbRepeatOnce,
-  BsSkipEndFill,
-  BsSkipStartFill,
-  BsPlayFill,
-  IoShuffle,
-  BsPauseFill,
-  GoMute, 
-  GoUnmute
+  RxHeartFilled, RxHeart, BsThreeDots, TbRepeat,
+  TbRepeatOnce, BsSkipEndFill, BsSkipStartFill,
+  BsPlayFill, IoShuffle, BsPauseFill, BsMusicNoteList,
+  IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute 
 } = icons;
 
 var intervalId;
 
-const Player = () => {
+const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
 
     const [songInfo, setSongInfo] = useState(null);
@@ -31,9 +23,9 @@ const Player = () => {
     const [currentSeconds, setCurrentSeconds] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
     const [repeatMode, setRepeatMode] = useState(0)
-    const [muted, setMuted] = useState(false)
     const [volumeValue, setVolumeValue] = useState(100)
     const [liked, setLiked] = useState(false)
+    
     const [isLoadingSong, setIsLoadingSong] = useState(false)
     const thumbRef = useRef();
     const trackRef = useRef();
@@ -51,6 +43,7 @@ const Player = () => {
             if (res1.data.err === 0) {
                 setSongInfo(res1.data.data);
                 // console.log(res1.data.data)
+                dispatch(actions.setCurrentSongData(res1.data.data))
                 setCurrentSeconds(0)
             }
             if (res2.data.err === 0) {
@@ -69,6 +62,11 @@ const Player = () => {
         fetchDetailSong();
     }, [currentSongId]);
 
+    //for volume controller
+    useEffect(() => { 
+        audio.volume = volumeValue / 100;
+    }, [volumeValue])
+    
     //for progress bar
     useEffect(() => {
         intervalId && clearInterval(intervalId)
@@ -86,7 +84,7 @@ const Player = () => {
                 setCurrentSeconds(Math.round(audio.currentTime))
             }, 200)
         }
-    },[audio])
+    },[audio, isPlaying])
 
     //for shuffle and repeat button
     useEffect(() => {
@@ -111,18 +109,14 @@ const Player = () => {
         setLiked(prev => !prev);
         
     }
-    const handleMuted = () => { 
-        setMuted(prev => !prev)
+    const handleShowRightSiderbar = () => { 
+        setIsShowRightSidebar(prev => !prev)
     }
-
+    const handleMuted = () => { 
+        setVolumeValue(prev => +prev === 0 ? 70 : 0)
+    }
     const handleChangeVolume = (e) => { 
         setVolumeValue(e.target.value)
-        audio.volume = volumeValue / 100;
-        if (volumeValue < 4) {
-            setMuted(true)
-        } else {
-            setMuted(false)
-        }
     }
     const handleTogglePlayMusic = () => { 
         if (isPlaying) {
@@ -250,7 +244,7 @@ const Player = () => {
                     className="cursor-pointer"
                     onClick={handleMuted}
                 >
-                    {muted ? <GoMute /> : <GoUnmute />}
+                    {+volumeValue >= 70 ? <IoVolumeHigh /> : +volumeValue >= 40 ? <IoVolumeMedium /> : +volumeValue === 0 ? <IoVolumeMute /> : <IoVolumeLow />}
                 </span>
                 <input 
                     type="range" name="volume" id="volume-control" step={1} min={0} max={100}
@@ -258,6 +252,12 @@ const Player = () => {
                     value={volumeValue}
                     onChange={handleChangeVolume}
                 />
+                <span 
+                    className={`${isShowRightSidebar ? "bg-dark-violet opacity-100" : "bg-gray-500"} p-1 rounded-md cursor-pointer opacity-50 hover:opacity-100`}
+                    title="Danh sách phát"
+                    onClick={handleShowRightSiderbar}
+                >
+                    <BsMusicNoteList size={20}/></span>
             </div>
         </div>
     );

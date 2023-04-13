@@ -6,6 +6,11 @@ export const setCurrentSongId = (songId) => ({
     songId
 });
 
+export const setCurrentSongData = (data) => ({
+    type: actionTypes.SET_CURRENT_SONG_DATA,
+    data
+});
+
 export const play = (flag) => ({
     type: actionTypes.PLAY,
     flag 

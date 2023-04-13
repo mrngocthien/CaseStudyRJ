@@ -1,6 +1,5 @@
 import appReducer from "./appReducer";
 import musicReducer from "./musicReducer";
-import favoriteMusicReducer from './favoriteSongsReducer'
 import { combineReducers } from 'redux';
 import { persistReducer } from "redux-persist";
 import storage from 'redux-persist/lib/storage'
@@ -14,13 +13,12 @@ const commonConfig = {
 const musicConfig = {
     ...commonConfig,
     key: 'music',
-    whitelist: ["currentSongId", "favoriteMusic"]
+    whitelist: ["currentSongId", "currentSongData"]
 }
 
 const rootReducer = combineReducers({
     app: appReducer,
-    music: persistReducer(musicConfig, musicReducer),
-    favoriteSong: persistReducer(musicConfig, favoriteMusicReducer)
+    music: persistReducer(musicConfig, musicReducer)
 })
 
 export default rootReducer;

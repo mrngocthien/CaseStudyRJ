@@ -11,7 +11,6 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.getHome())
-    dispatch(actions.getTopMusic())
   }, [dispatch])
   return (
     <>

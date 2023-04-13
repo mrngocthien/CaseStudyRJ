@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 function TopMusic() {
-    const { topPlaylist } = useSelector(state => state.app)
-    // console.log(topPlaylist)
+    const { top100 } = useSelector(state => state.app)
+    console.log(top100)
     const navigate = useNavigate();
 
     const handleClickedBanner = (item) => {
@@ -16,14 +16,14 @@ function TopMusic() {
        <div className='px-[59px] relative flex flex-col gap-4'>
             <h1 className='text-gray-200 font-semibold text-3xl'>Nổi bật</h1>
             <div className='flex gap-5 flex-wrap'>
-                {topPlaylist?.map(item => {
+                {top100?.map(item => {
                     return(
                         <img
                             key={item.encodeId}
                             src={item.thumbnailM}
                             alt='categories'
                             onClick={() => handleClickedBanner(item)}
-                            className='w-[200px] rounded-md cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-500'
+                            className='w-1/6 rounded-md cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-500'
                         />
                     )
                 })}

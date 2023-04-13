@@ -8,15 +8,16 @@ import { BsThreeDots,
     BsSkipEndFill, 
     BsPlayFill, 
     BsPauseFill, 
-    BsDot
+    BsDot,
+    BsMusicNoteList
     } from 'react-icons/bs'
 import { AiOutlineLineChart, AiOutlineStar, AiOutlineLogout } from 'react-icons/ai'
 import { BiDisc } from 'react-icons/bi'
-import { IoSearchOutline, IoShuffle } from 'react-icons/io5'
+import { IoSearchOutline, IoShuffle, IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute } from 'react-icons/io5'
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
 import { TbRepeatOnce, TbRepeat } from 'react-icons/tb'
 import { HiOutlineMusicNote } from 'react-icons/hi'
-import { GoMute, GoUnmute} from 'react-icons/go'
+import { RiDeleteBinFill } from 'react-icons/ri'
 
 const icons = {
     MdOutlineLibraryMusic,
@@ -39,8 +40,12 @@ const icons = {
     HiOutlineMusicNote,
     BsDot,
     AiOutlineLogout,
-    GoMute,
-    GoUnmute
+    IoVolumeHigh,
+    IoVolumeMedium,
+    IoVolumeLow,
+    IoVolumeMute,
+    BsMusicNoteList,
+    RiDeleteBinFill
 }
 
 export default icons;
