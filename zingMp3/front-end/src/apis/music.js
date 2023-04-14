@@ -39,6 +39,18 @@ export async function apiGetDetailPlaylist(playlistId) {
     }
 }
 
+export async function getTopMusicData() {
+    try {
+        const res = await axios({
+            url: '/top100',
+            method: 'get'
+        })
+        return res
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export async function apiSearch(keyword) {
     try {
         const res = await axios({

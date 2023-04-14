@@ -12,7 +12,7 @@ const TrendingArtist = ({data}) => {
   return (
     <div className='mt-10 flex flex-col gap-4'>
       <h3 className='text-[20px] font-bold'>{data?.title}</h3>
-      <div className='flex gap-8 items-center cursor-pointer'>
+      <div className='flex gap-8 px-[10px] items-center cursor-pointer'>
         {data?.items?.map(item => (
           <div key={item.encodeId} className='flex-1 flex flex-col gap-1'>
             <img 

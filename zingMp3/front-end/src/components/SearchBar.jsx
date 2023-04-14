@@ -1,20 +1,26 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import icons from "../ultis/icons";
-import * as apis from '../apis'
+import * as actions from '../store/actions'
+import { useDispatch } from 'react-redux';
+import { useNavigate, createSearchParams } from "react-router-dom";
+import path from './../ultis/path';
 
 const { IoSearchOutline } = icons;
 
 function SearchBar() {
   const [keyword, setKeyword] = useState('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSearh = async (e) => { 
     if (e.keyCode === 13) {
-      try {
-        const res = await apis.apiSearch(keyword)
-        console.log(res)
-      } catch (error) {
-        console.log(error)
-      }
+      dispatch(actions.search(keyword))
+      navigate({
+        pathname: `${path.SEARCH}/${path.SEARCH_ALL}`,
+        search: createSearchParams({
+          q: keyword
+        }).toString()
+      })
     }
   }
 

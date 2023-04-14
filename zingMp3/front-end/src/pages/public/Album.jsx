@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from '../../store/actions'
 import icons from "../../ultis/icons";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { handleNumberFollower } from '../../ultis/funtions'
 
 const {
   BsPlayFill,
@@ -63,7 +64,7 @@ const Album = () => {
                   </span>
                   <span className='flex gap-2 items-center text-gray-400 text-xs'>{playlistData?.artistsNames}</span>
                   <span className='flex gap-2 items-center text-gray-400 text-xs'>
-                    {`${playlistData?.like > 10000 ? Math.round(playlistData?.like / 10000) : Math.round(playlistData?.like / 1000)}K người yêu thích`}
+                    {`${handleNumberFollower(playlistData?.like)} người yêu thích`}
                   </span>
               </div>
               <button 
