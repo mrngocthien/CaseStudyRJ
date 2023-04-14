@@ -13,7 +13,7 @@ const SidebarRight = () => {
   const { currentSongData } = useSelector(state => state.music);
   console.log(currentSongData)
   return (
-    <div className='w-full h-full bg-main-100 flex flex-col text-xs text-gray-300'>
+    <div className='w-full h-full bg-main-200 flex flex-col text-xs text-gray-300'>
       <div className='h-[70px] flex-none px-2 py-[14px] flex gap-8 justify-between items-center'>
         <div className='w-full flex-auto flex justify-center bg-main-500 rounded-l-full rounded-r-full p-[5px] cursor-pointer'>
           <span 

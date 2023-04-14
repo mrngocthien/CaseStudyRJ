@@ -16,7 +16,7 @@ const TrendingArtist = ({data}) => {
         {data?.items?.map(item => (
           <div key={item.encodeId} className='flex-1 flex flex-col gap-1'>
             <img 
-              src={item.thumbnailM} alt="thumbnailM" 
+              src={item.thumbnail} alt="thumbnailM" 
               className='rounded-md object-contain hover:animate-scale-up-image'
               onClick={() => handleClickedBanner(item)}
             />

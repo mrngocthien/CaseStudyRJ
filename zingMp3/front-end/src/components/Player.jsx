@@ -188,7 +188,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     </span>
                 </div>
                 <div className="flex flex-col">
-                    <span className="font-semibold texy-sm">{songInfo?.title}</span>
+                    <span className="font-semibold texy-sm">{songInfo?.title?.length > 25 ? `${songInfo?.title?.slice(0, 25)}...`: songInfo?.title}</span>
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="flex gap-4 pl-2">

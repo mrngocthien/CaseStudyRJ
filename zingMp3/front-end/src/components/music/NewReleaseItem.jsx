@@ -4,7 +4,7 @@ import 'moment/locale/vi'
 import { useDispatch } from 'react-redux'
 import * as actions from '../../store/actions'
 
-const SongItem = ({thumbnail, title, artistsNames, releaseDate, sid}) => {
+const NewReleaseItem = ({thumbnail, title, artistsNames, releaseDate, sid}) => {
   const dispatch = useDispatch()
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ const SongItem = ({thumbnail, title, artistsNames, releaseDate, sid}) => {
   }
 
   return (
-    <div className='p-[10px] gap-[10px] bg-main-200 flex hover:bg-main-100 rounded-md items-center' onClick={handleClick}>
+    <div className='w-[30%] m-2 justify-start p-[10px] gap-[10px] bg-main-200 flex hover:bg-main-100 rounded-md items-center' onClick={handleClick}>
       <img src={thumbnail} alt="thumbnail" className='w-[60px] h-[60px] object-cover rounded-md cursor-pointer hover:animate-scale-up-image'/>
       <div className='flex flex-col'>
         <span className='text-sm'>{title?.length > 25 ? `${title?.slice(0, 25)}...` : title}</span>
@@ -24,4 +24,4 @@ const SongItem = ({thumbnail, title, artistsNames, releaseDate, sid}) => {
   )
 }
 
-export default memo(SongItem)
+export default memo(NewReleaseItem)

@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import { SongItem } from './'
+import { NewReleaseItem } from './'
 
 
 const Section = ({data}) => {
@@ -41,7 +41,7 @@ const Section = ({data}) => {
             </div>
             <div className='flex flex-wrap'>
                 {songType?.map(item => (
-                    <SongItem 
+                    <NewReleaseItem 
                         key={item.encodeId} 
                         thumbnail={item.thumbnail}  
                         title={item.title} 
