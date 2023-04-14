@@ -6,7 +6,7 @@ const TrendingArtist = ({data}) => {
 
   const handleClickedBanner = (item) => {
     const albumPath = item?.link.split('.')[0];
-    navigate(albumPath)
+    navigate(albumPath, {state: { playAlbum: false }})
   };
 
   return (
@@ -17,7 +17,7 @@ const TrendingArtist = ({data}) => {
           <div key={item.encodeId} className='flex-1 flex flex-col gap-1'>
             <img 
               src={item.thumbnailM} alt="thumbnailM" 
-              className='rounded-md object-contain'
+              className='rounded-md object-contain hover:animate-scale-up-image'
               onClick={() => handleClickedBanner(item)}
             />
             <span className='text-gray-400'>{item.sortDescription}</span>

@@ -82,8 +82,7 @@ const Slider = () => {
       dispatch(actions.setPlaylist(null))
     } else if (item.type === 4) {
       const albumPath = item?.link.split('.')[0];
-      console.log('item' + item?.link)
-      navigate(albumPath)
+      navigate(albumPath, {state: { playAlbum: false }})
     } else {
       dispatch(actions.setPlaylist(null))
     }

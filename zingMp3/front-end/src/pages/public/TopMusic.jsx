@@ -8,9 +8,9 @@ function TopMusic() {
     const navigate = useNavigate();
 
     const handleClickedBanner = (item) => {
-        const playlistPath = item?.link?.split('.')[0];
+        const albumPath = item?.link?.split('.')[0];
         // console.log(item?.link)
-        navigate(playlistPath)
+        navigate(albumPath, {state: { playAlbum: false }})
     };
     return (
        <div className='px-[59px] relative flex flex-col gap-4'>

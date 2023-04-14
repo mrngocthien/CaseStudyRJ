@@ -1,4 +1,8 @@
-import { Home, SignIn, SignInClassical, Public, Personal, Album, TopMusic, SignUp, WeekRank } from './pages/public';
+import { 
+  Home, SignIn, SignInClassical, Public, 
+  Personal, Album, TopMusic, SignUp, WeekRank, 
+  Search, SearchSong, SearchAll } from './pages/public';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route} from 'react-router-dom';
@@ -23,6 +27,10 @@ function App() {
             <Route path={path.PLAYLIST__TITLE__PID} element={<Album />} />
             <Route path={path.TOP_100} element={<TopMusic />} />
             <Route path={path.WEEK_RANK__TITLE__PID} element={<WeekRank />} />
+            <Route path={path.SEARCH} element={<Search />} >
+              <Route path={path.SEARCH_ALL} element={<SearchAll />} />
+              <Route path={path.SEARCH_SONG} element={<SearchSong />} />
+            </Route>
 
             <Route path={path.STAR} element={<Home />} />
           </Route>

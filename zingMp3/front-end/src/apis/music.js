@@ -38,3 +38,16 @@ export async function apiGetDetailPlaylist(playlistId) {
         console.error(error)
     }
 }
+
+export async function apiSearch(keyword) {
+    try {
+        const res = await axios({
+            url: '/search',
+            method: 'get',
+            params: {keyword}
+        })
+        return res
+    } catch (error) {
+        console.error(error)
+    }
+}

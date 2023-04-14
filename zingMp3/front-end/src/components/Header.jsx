@@ -1,6 +1,6 @@
 import React from 'react'
 import icons from '../ultis/icons'
-import Search from './Search';
+import SearchBar from './SearchBar';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -35,7 +35,7 @@ function Header() {
                     <span className='hover:text-white cursor-pointer'><MdOutlineKeyboardDoubleArrowRight size={30}/></span>
                 </div>
                 <div className='w-1/2'>
-                    <Search />
+                    <SearchBar />
                 </div>
             </div>
             <div className='flex w-1/4 gap-2 items-center justify-end'>

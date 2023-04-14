@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import * as apis from "../../apis";
 import moment from "moment";
 import { SongList, AudioPlayingBars } from "../../components";
@@ -18,6 +18,7 @@ const Album = () => {
   const { isPlaying, songs } = useSelector((state) => state.music);
   const [playlistData, setPlaylistData] = useState({});
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchDetailPlaylist() {
@@ -32,6 +33,7 @@ const Album = () => {
   }, [pid, dispatch]);
 
   const handleTogglePlayMusic = () => {
+    location.state.playAlbum = true
     dispatch(actions.setCurrentSongId(songs[0].encodeId))
     dispatch(actions.play(true))
   }
@@ -42,14 +44,14 @@ const Album = () => {
                 <img 
                   src={playlistData?.thumbnailM} 
                   alt="thumbnail" 
-                  className={`w-full object-contain hover:bg-overlay-30 ${isPlaying ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'}`} 
+                  className={`w-full object-contain ${(isPlaying && location?.state?.playAlbum ) ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'}`} 
                 />
                 <div 
                   className="absolute top-0 left-0 right-0 bottom-0 hover:bg-overlay-30 flex items-center justify-center cursor-pointer"
                   onClick={handleTogglePlayMusic}
                 >
                   <span className="p-3 border rounded-full">
-                    {isPlaying ? <AudioPlayingBars /> : <BsPlayFill size={30}/>}
+                    {(isPlaying && location?.state?.playAlbum ) ? <AudioPlayingBars /> : <BsPlayFill size={30}/>}
                   </span>
                 </div>
               </div>

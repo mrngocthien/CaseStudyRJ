@@ -31,6 +31,10 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     const trackRef = useRef();
     const dispatch = useDispatch();
 
+    async function play() {
+        await audio.play()
+    }
+
     //for fetch audio source
     useEffect(() => {
         async function fetchDetailSong() {
@@ -73,11 +77,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
         audio.pause()
         audio.load()
         if (isPlaying) {
-            async function play() {
-                await audio.play()
-            }
-            play();
-            const thumbEl = document.getElementById('thumb-progress')
+            play()
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo.duration) / 100
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`

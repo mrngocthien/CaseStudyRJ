@@ -1,10 +1,17 @@
 import React from 'react'
-import { SongList } from '../../components';
+import { SongItem, SongList } from '../../components';
+import { useSelector } from 'react-redux'
 
 const RecentList = () => {
-  
+  const { currentSongData } = useSelector(state => state.music);
   return (
     <div>
+      <SongItem 
+        thumbnail={currentSongData.thumbnail}
+        title={currentSongData.title}
+        artistsNames={currentSongData.artistsNames}
+        releaseDate={currentSongData.releaseDate}
+        sid={currentSongData.encodeId}/>
       <SongList />
     </div>
     

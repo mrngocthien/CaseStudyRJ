@@ -7,3 +7,7 @@ export { default as Personal } from './Personal'
 export { default as Album } from './Album'
 export { default as TopMusic } from './TopMusic'
 export { default as WeekRank } from './WeekRank'
+export { default as Search } from './Search'
+
+export { default as SearchSong } from './search/SearchSong'
+export { default as SearchAll } from './search/SearchAll'
