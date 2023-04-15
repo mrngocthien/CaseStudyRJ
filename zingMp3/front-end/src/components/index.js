@@ -9,6 +9,7 @@ export { default as Section } from './Section'
 export { default as Button } from './Button'
 export { default as WeekChartExplorer } from './WeekChartExplorer'
 export { default as TrendingArtist } from './TrendingArtist'
+export { default as SearchPlaylistItem } from './SearchPlaylistItem'
 
 export { default as UserProfile} from './personal/UserProfile';
 export { default as UserMusic} from './personal/UserMusic';

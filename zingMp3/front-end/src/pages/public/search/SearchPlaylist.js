@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { SearchPlaylistItem } from '../../../components'
 
 const SearchPlaylist = () => {
+  const { searchData } = useSelector(state => state.music)
   return (
-    <div>SearchPlaylist</div>
+    <SearchPlaylistItem data={searchData?.playlists} />
   )
 }
 

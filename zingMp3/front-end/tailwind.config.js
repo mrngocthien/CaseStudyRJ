@@ -12,7 +12,8 @@ module.exports = {
         'main-300': '#170F23',
         'main-400': '#120822',
         'main-500': '#130c1C',
-        'overlay-30': 'rgba(0, 0, 0, 0.3)'
+        'overlay-30': 'rgba(0, 0, 0, 0.3)',
+        'overlay-20': 'rgba(0, 0, 0, 0.2)'
       },
       colors: {
         'light-violet': "#eb1eff",

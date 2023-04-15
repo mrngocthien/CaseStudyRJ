@@ -41,14 +41,7 @@ const Section = ({data}) => {
             </div>
             <div className='flex flex-wrap'>
                 {songType?.map(item => (
-                    <NewReleaseItem 
-                        key={item.encodeId} 
-                        thumbnail={item.thumbnail}  
-                        title={item.title} 
-                        artistsNames={item.artistsNames} 
-                        releaseDate={item.releaseDate}
-                        sid={item.encodeId}
-                    />
+                    <NewReleaseItem key={item.encodeId} data={item}/>
                 ))}
             </div>
         </div>

@@ -7,6 +7,7 @@ const path = {
     STAR: '*',
     MY_MUSIC: 'mymusic',
     HOME__SINGER: ':singer',
+    HOME__ARTIST__SINGER: 'nghe-si/:singer',
     ALBUM__TITLE__PID: 'album/:title/:pid',
     PLAYLIST__TITLE__PID: 'playlist/:title/:pid',
     TOP_100: 'top100',

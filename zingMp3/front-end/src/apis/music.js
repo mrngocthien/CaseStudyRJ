@@ -76,3 +76,16 @@ export async function apiGetArtistSong(artistId) {
         console.error(error)
     }
 }
+
+export async function apiGetArtist(alias) {
+    try {
+        const res = await axios({
+            url: '/artist',
+            method: 'get',
+            params: {name: alias}
+        })
+        return res
+    } catch (error) {
+        console.error(error)
+    }
+}

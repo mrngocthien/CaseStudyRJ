@@ -2,15 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { handleNumberFollower } from '../../../ultis/funtions'
 import { SongItem, Song, Artist } from '../../../components'
-
+import { Link } from 'react-router-dom'
 
 const SearchAll = () => {
   const { searchData } = useSelector(state => state.music)
-  console.log(searchData)
   return (
     <div className='w-full flex flex-col gap-4'>
       <div className='flex flex-col gap-4'>
-        <h3 className='text-2xl font-bold'>Nổi Bật</h3>
+        {searchData && <h3 className='text-2xl font-bold'>Nổi Bật</h3>}
         <div className='flex gap-8'>
           {searchData?.top && 
             <div className='flex-1 flex gap-4 items-center bg-main-200 rounded-md hover:bg-main-100 cursor-pointer'>
@@ -20,15 +19,14 @@ const SearchAll = () => {
               />
               <div className='flex flex-col justify-center'>
                 <span className='text-gray-400 text-sm'>{searchData?.top?.objectType === 'artist' ? 'Nghệ sĩ' : 'Bài hát'}</span>
-                <span className='font-semibold'>{searchData?.top?.title || searchData?.top?.name}</span>
+                <Link to={searchData?.artists[0]?.link} className='font-semibold'>{searchData?.top?.title || searchData?.top?.name}</Link>
                 <span className='text-gray-400 text-sm'>{`${handleNumberFollower(searchData?.artists[0]?.totalFollow)} quan tâm`}</span>
               </div>
             </div>
           }
           {searchData?.songs?.filter((item, index) => [...Array(2).keys()].some(item => item === index))?.map(item => (
-            <div className='flex-1'>
+            <div key={item.encodeId} className='flex-1'>
               <SongItem 
-              key={item.encodeId}
               sid={item.encodeId}
               thumbnail={item.thumbnail}
               title={item.title}
@@ -39,7 +37,7 @@ const SearchAll = () => {
         </div>
       </div>
       <div className='flex flex-col w-full gap-4'>
-        <h3 className='text-2xl font-bold'>Bài Hát</h3>
+        {searchData && <h3 className='text-2xl font-bold'>Bài Hát</h3>}
         <div className='flex justify-between flex-wrap w-full'>
           {searchData?.songs?.map(item => (
             <div key={item.encodeId} className='flex-auto w-[45%] '>
@@ -49,7 +47,7 @@ const SearchAll = () => {
         </div>
       </div>
       <div className='flex flex-col w-full gap-4'>
-        <h3 className='text-2xl font-bold'>Playlist/Album</h3>
+        {searchData && <h3 className='text-2xl font-bold'>Playlist/Album</h3>}
         <div className='flex gap-8 px-[10px] items-center cursor-pointer'>
           {searchData?.playlists?.filter((item, index) => index <=4)?.map(item => (
             <div key={item.encodeId} className='flex-1 flex flex-col gap-1'>
@@ -64,7 +62,7 @@ const SearchAll = () => {
         </div>
       </div>
       <div className='flex flex-col w-full gap-4'>
-        <h3 className='text-2xl font-bold'>Nghệ sĩ</h3>
+        {searchData && <h3 className='text-2xl font-bold'>Nghệ sĩ</h3>}
         <div className='flex gap-[28px] w-full'>
           {searchData?.artists?.filter((item, index) => index <=3)?.map(item => (
             <Artist data={item} key={item.id}/>

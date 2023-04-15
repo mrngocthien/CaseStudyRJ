@@ -12,7 +12,7 @@ const SongList = ({ totalDuration, isOnRightSidebar }) => {
     return (
             
         <div className='w-full flex flex-col text-xs'>
-            {!isOnRightSidebar &&
+            {(!isOnRightSidebar) &&
                 <div className='flex justify-between items-center p-[10px] font-semibold text-gray-400'>
                     <span>
                         <span>BÀI HÁT</span>

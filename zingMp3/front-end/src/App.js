@@ -28,6 +28,7 @@ function App() {
             <Route path={path.TOP_100} element={<TopMusic />} />
             <Route path={path.WEEK_RANK__TITLE__PID} element={<WeekRank />} />
             <Route path={path.HOME__SINGER} element={<Singer />} />
+            <Route path={path.HOME__ARTIST__SINGER} element={<Singer />} />
             <Route path={path.SEARCH} element={<Search />} >
               <Route path={path.SEARCH_ALL} element={<SearchAll />} />
               <Route path={path.SEARCH_SONG} element={<SearchSong />} />

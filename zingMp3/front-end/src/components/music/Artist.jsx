@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react'
 import { handleNumberFollower } from '../../ultis/funtions'
 import { Link } from 'react-router-dom';
-import path from './../../ultis/path';
 
 const Artist = ({data}) => {
   const [isHover, setIsHover] = useState(false)
