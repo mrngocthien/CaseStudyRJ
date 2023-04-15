@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 const { HiOutlineMusicNote } = icons
 
 //received songData from SongList component
-const Song = ({ songData, isHide }) => {
+const Song = ({ songData, isHideAlbum }) => {
   const dispatch = useDispatch();
     // console.log({songData})
   const handleClickSong = () => {
@@ -20,21 +20,21 @@ const Song = ({ songData, isHide }) => {
       onClick={() => handleClickSong()}
     >
       <div className='flex items-center gap-3 flex-1'>
-          {!isHide && <span><HiOutlineMusicNote /></span>}
+          {<span><HiOutlineMusicNote /></span>}
           <img src={songData?.thumbnail} alt="thumbnailM" className='w-10 h-10 object-cover rounded-md hover:animate-scale-up-image' />
           <div className='flex flex-col gap-1 w-full'>
               <span className='text-sm font-semibold'>{songData?.title?.length > 20 ? `${songData?.title?.slice(0, 20)}...` : songData?.title}</span>
               <span className='text-xs text-gray-400'>{songData?.artistsNames?.length > 20 ? `${songData?.artistsNames?.slice(0, 20)}...` : songData?.artistsNames}</span>
           </div>
       </div>
-      {!isHide && 
+      {!isHideAlbum &&
         <div className='flex-1 flex items-center justify-center'>
             {songData?.album?.title?.length > 25 ? `${songData?.album?.title?.slice(0, 25)}...` : songData?.album?.title}
         </div>
       }
-      <div className='flex-1 flex justify-end text-xs'>
+      {<div className='flex-1 flex justify-end text-xs'>
           {moment.utc(songData?.duration * 1000).format('mm:ss')}
-      </div>
+      </div>}
     </div>
   )
 }

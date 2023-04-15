@@ -63,3 +63,16 @@ export async function apiSearch(keyword) {
         console.error(error)
     }
 }
+
+export async function apiGetArtistSong(artistId) {
+    try {
+        const res = await axios({
+            url: '/artistsong',
+            method: 'get',
+            params: {id: artistId, page: 1, count: 50}
+        })
+        return res
+    } catch (error) {
+        console.error(error)
+    }
+}

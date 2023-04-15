@@ -11,7 +11,9 @@ const RecentList = () => {
         title={currentSongData.title}
         artistsNames={currentSongData.artistsNames}
         releaseDate={currentSongData.releaseDate}
-        sid={currentSongData.encodeId}/>
+        sid={currentSongData.encodeId}
+        size='w-[40px] h-[40px]'
+      />
       <SongList isHide />
     </div>
     

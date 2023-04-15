@@ -27,18 +27,21 @@ const SidebarRight = () => {
         </div>
         <span className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'><RiDeleteBinFill size={20}/></span>
       </div>  
-      <div className='w-full flex flex-col'>
+      <div className='w-full flex flex-col p-2'>
         <SongItem 
           thumbnail={currentSongData.thumbnail}
           title={currentSongData.title}
           artistsNames={currentSongData.artistsNames}
           releaseDate={currentSongData.releaseDate}
           sid={currentSongData.encodeId}
+          size='w-[40px] h-[40px]'
+          style= 'bg-dark-violet text-white'
+          
         />
       </div>
       {isActive === 0 && 
         <div>
-          <SongList isHide />
+          <SongList isHideAlbum isHideDuration/>
         </div>
       }
     </div>

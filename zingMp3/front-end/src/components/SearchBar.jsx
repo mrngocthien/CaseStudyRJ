@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, createSearchParams } from "react-router-dom";
 import path from './../ultis/path';
 
-const { IoSearchOutline } = icons;
+const { IoSearchOutline, AiOutlineClose } = icons;
 
 function SearchBar() {
   const [keyword, setKeyword] = useState('')
@@ -25,7 +25,7 @@ function SearchBar() {
   }
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center relative">
       <span className="h-10 rounded-l-[20px] pl-4 flex items-center justify-center bg-main-100">
         <IoSearchOutline size={24} />
       </span>
@@ -37,6 +37,11 @@ function SearchBar() {
         onChange={e => setKeyword(e.target.value)}
         onKeyUp={handleSearh}
       />
+      {keyword && 
+        <span className="absolute right-5 cursor-pointer" onClick={() => setKeyword('')}>
+          <AiOutlineClose size={20}/>
+        </span>
+      }
     </div>
   );
 }

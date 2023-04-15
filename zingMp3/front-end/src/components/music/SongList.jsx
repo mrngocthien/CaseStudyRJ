@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux'
 const { BsDot } = icons
 
 //received totalDuration prop from Album page
-const SongList = ({ totalDuration, isHide }) => {
+const SongList = ({ totalDuration, isOnRightSidebar }) => {
     const { songs } = useSelector(state => state.music)
     return (
             
         <div className='w-full flex flex-col text-xs'>
-            {!isHide &&
+            {!isOnRightSidebar &&
                 <div className='flex justify-between items-center p-[10px] font-semibold text-gray-400'>
                     <span>
                         <span>BÀI HÁT</span>
@@ -23,10 +23,10 @@ const SongList = ({ totalDuration, isHide }) => {
             }
             <div className='flex flex-col'>
                 {songs?.map(item => (
-                    <Song key={item.encodeId} songData={item} />
+                    <Song key={item.encodeId} songData={item}/>
                 ))}
             </div>
-            {!isHide && 
+            {(totalDuration) && 
                 <div>
                     <span className="flex items-center">
                         <span>{`${songs?.length} bài hát`}</span>

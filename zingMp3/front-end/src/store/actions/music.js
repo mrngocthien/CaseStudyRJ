@@ -33,20 +33,46 @@ export const search = (keyword) => async (dispatch) => {
         if (res.data.err === 0) {
             dispatch({
                 type: actionTypes.SEARCH,
-                data: res.data.data
+                data: res.data.data,
+                keyword: keyword
             })
         } else {
             dispatch({
                 type: actionTypes.SEARCH,
-                data: null
+                data: null,
+                keyword: ''
             })
         }
     } catch (error) {
         console.error(error)
         dispatch({
             type: actionTypes.SEARCH,
-            homeData: null
+            data: null,
+            keyword: ''
         })
     }
 }
 
+export const getSearchSongs = (artistId) => async (dispatch) => {
+    try {
+        const res = await apis.apiGetArtistSong(artistId)
+        // console.log(res)
+        if (res.data.err === 0) {
+            dispatch({
+                type: actionTypes.PLAYLIST,
+                songs: res.data.data.items
+            })
+        } else {
+            dispatch({
+                type: actionTypes.PLAYLIST,
+                songs: null
+            })
+        }
+    } catch (error) {
+        console.error(error)
+        dispatch({
+            type: actionTypes.PLAYLIST,
+            songs: null
+        })
+    }
+}

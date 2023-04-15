@@ -11,7 +11,7 @@ import { BsThreeDots,
     BsDot,
     BsMusicNoteList
     } from 'react-icons/bs'
-import { AiOutlineLineChart, AiOutlineStar, AiOutlineLogout } from 'react-icons/ai'
+import { AiOutlineLineChart, AiOutlineStar, AiOutlineLogout, AiOutlineClose } from 'react-icons/ai'
 import { BiDisc } from 'react-icons/bi'
 import { IoSearchOutline, IoShuffle, IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute } from 'react-icons/io5'
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
@@ -45,7 +45,8 @@ const icons = {
     IoVolumeLow,
     IoVolumeMute,
     BsMusicNoteList,
-    RiDeleteBinFill
+    RiDeleteBinFill,
+    AiOutlineClose
 }
 
 export default icons;
