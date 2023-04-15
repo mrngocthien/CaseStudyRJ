@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import icons from "../ultis/icons";
 import { useSelector } from 'react-redux'
-import SongItem from './music/SongItem';
+import { SongItem, SongList} from './';
 
 const {
   RiDeleteBinFill 
@@ -9,7 +9,7 @@ const {
 
 
 const SidebarRight = () => {
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(0)
   const { currentSongData } = useSelector(state => state.music);
   console.log(currentSongData)
   return (
@@ -17,12 +17,12 @@ const SidebarRight = () => {
       <div className='h-[70px] flex-none px-2 py-[14px] flex gap-8 justify-between items-center'>
         <div className='w-full flex-auto flex justify-center bg-main-500 rounded-l-full rounded-r-full p-[5px] cursor-pointer'>
           <span 
-            className={`${!isActive && 'bg-gray-600 text-white'} py-[5px] flex-1 flex justify-center rounded-l-full rounded-r-full`}
-            onClick={() => setIsActive(prev => !prev)}
+            className={`${isActive === 0 && 'bg-gray-600 text-white'} py-[5px] flex-1 flex justify-center rounded-l-full rounded-r-full`}
+            onClick={() => setIsActive(0)}
           >Danh sách phát</span>
           <span 
-            className={`${isActive && 'bg-gray-600 text-white'} py-[5px] flex-1 flex justify-center rounded-l-full rounded-r-full`}
-            onClick={() => setIsActive(prev => !prev)}  
+            className={`${isActive === 1 && 'bg-gray-600 text-white'} py-[5px] flex-1 flex justify-center rounded-l-full rounded-r-full`}
+            onClick={() => setIsActive(1)}  
           >Nghe gần đây</span> 
         </div>
         <span className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'><RiDeleteBinFill size={20}/></span>
@@ -36,6 +36,11 @@ const SidebarRight = () => {
           sid={currentSongData.encodeId}
         />
       </div>
+      {isActive === 0 && 
+        <div>
+          <SongList isHide />
+        </div>
+      }
     </div>
   )
 }

@@ -28,7 +28,7 @@ const Public = () => {
             <Outlet />
         </div>
         {isShowRightSidebar && 
-          <div className="w-[300px] flex-none animate-slide-left">
+          <div className="w-[320px] flex animate-slide-left">
             <SidebarRight />
           </div>}
       </div>

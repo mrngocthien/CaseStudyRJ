@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 
 const { HiOutlineMusicNote } = icons
 
-//received songData prop from SongList component
-const Song = ({songData, isHide}) => {
+//received songData from SongList component
+const Song = ({ songData, isHide }) => {
   const dispatch = useDispatch();
     // console.log({songData})
   const handleClickSong = () => {

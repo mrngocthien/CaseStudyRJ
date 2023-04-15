@@ -12,7 +12,7 @@ const RecentList = () => {
         artistsNames={currentSongData.artistsNames}
         releaseDate={currentSongData.releaseDate}
         sid={currentSongData.encodeId}/>
-      <SongList />
+      <SongList isHide />
     </div>
     
   );

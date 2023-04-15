@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { handleNumberFollower } from '../../../ultis/funtions'
-import { SongItem, Song } from '../../../components'
+import { SongItem, Song, Artist } from '../../../components'
 
 
 const SearchAll = () => {
@@ -60,6 +60,14 @@ const SearchAll = () => {
                 <span className='text-gray-400 text-sm'>{item.artistsNames}</span>
               </div>
             </div>
+          ))}    
+        </div>
+      </div>
+      <div className='flex flex-col w-full gap-4'>
+        <h3 className='text-2xl font-bold'>Nghệ sĩ</h3>
+        <div className='flex gap-[28px] w-full'>
+          {searchData?.artists?.filter((item, index) => index <=3)?.map(item => (
+            <Artist data={item} key={item.id}/>
           ))}    
         </div>
       </div>
