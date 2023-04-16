@@ -26,6 +26,10 @@ export const setPlaylist = (songs) => ({
     songs 
 });
 
+export const setCurrentAlbumId = (albumId) => ({
+    type: actionTypes.SET_CURRENT_ALBUM_ID,
+    albumId 
+});
 
 export const search = (keyword) => async (dispatch) => {
     try {

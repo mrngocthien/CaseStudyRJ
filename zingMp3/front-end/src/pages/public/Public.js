@@ -22,17 +22,16 @@ const Public = () => {
           <SidebarLeft />
         </div>
         <div className="flex-auto">
-          <div className='h-[70px] px-[59px] flex items-center'>
+          <div className='h-[70px] px-[59px] flex items-center z-10'>
             <Header />
           </div>
             <Outlet />
         </div>
-        {isShowRightSidebar && 
-          <div className="w-[320px] flex animate-slide-left">
-            <SidebarRight />
-          </div>}
+        <div className={`w-[320px] h-full flex fixed right-0 z-20 ${isShowRightSidebar ? 'animate-slide-left' : 'hidden'}`}>
+          <SidebarRight />
+        </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-[90px]">
+      <div className="absolute bottom-0 left-0 right-0 h-[90px] fixed z-30">
         <Player setIsShowRightSidebar = {setIsShowRightSidebar} isShowRightSidebar = {isShowRightSidebar} />
       </div>
     </div>

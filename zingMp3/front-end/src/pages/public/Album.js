@@ -22,6 +22,7 @@ const Album = () => {
   const location = useLocation();
 
   useEffect(() => {
+    dispatch(actions.setCurrentAlbumId(pid))
     async function fetchDetailPlaylist() {
       const res = await apis.apiGetDetailPlaylist(pid);
       console.log(res);

@@ -19,13 +19,15 @@ module.exports = {
         'light-violet': "#eb1eff",
         'dark-violet': "#940a8d",
         'dark-green': "#00bc00",
-        'dark-orange': "#E2570D"
+        'dark-orange': "#E2570D",
+        'light-gray': "#E2E3D7",
+        'dark-gray': "#7F7D7D"
       },
       keyframes: {
         'slide-right': {
           '0%': {
-            '-webkit-transform': ' translateX(-500px);',
-            transform: 'translateX(-500px);'
+            '-webkit-transform': ' translateX(500px);',
+            transform: 'translateX(500px);'
           },
           '100%': {
             '-webkit-transform': 'translateX(0);',

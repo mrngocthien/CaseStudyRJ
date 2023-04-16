@@ -24,5 +24,5 @@ export { default as Song } from './music/Song'
 export { default as AudioPlayingBars } from './music/AudioPlayingBars'
 export { default as LoadingSong } from './music/LoadingSong'
 
-
+export { default as SingerAlbumItem} from './singer/SingerAlbumItem'
 

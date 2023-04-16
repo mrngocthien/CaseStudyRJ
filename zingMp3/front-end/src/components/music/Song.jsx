@@ -24,7 +24,7 @@ const Song = ({ songData, isHideAlbum }) => {
           <img src={songData?.thumbnail} alt="thumbnailM" className='w-10 h-10 object-cover rounded-md hover:animate-scale-up-image' />
           <div className='flex flex-col gap-1 w-full'>
               <span className='text-sm font-semibold'>{songData?.title?.length > 20 ? `${songData?.title?.slice(0, 20)}...` : songData?.title}</span>
-              <span className='text-xs text-gray-400'>{songData?.artistsNames?.length > 20 ? `${songData?.artistsNames?.slice(0, 20)}...` : songData?.artistsNames}</span>
+              <span className='text-xs text-dark-gray'>{songData?.artistsNames?.length > 20 ? `${songData?.artistsNames?.slice(0, 20)}...` : songData?.artistsNames}</span>
           </div>
       </div>
       {!isHideAlbum &&

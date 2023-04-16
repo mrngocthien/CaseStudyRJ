@@ -22,19 +22,19 @@ const Section = ({data}) => {
             <div className='flex items-center gap-4'>
                 <button
                     type='button'
-                    className={`${isActive === 0 && 'bg-light-violet'} py-1 px-4 rounded-l-full rounded-r-full border`}
+                    className={`${isActive === 0 && 'bg-light-violet text-black font-semibold'} py-1 px-4 rounded-l-full rounded-r-full border`}
                     onClick={() => setIsActive(0)}
                 >VIỆT NAM
                 </button>
                 <button
                     type='button'
-                    className={`${isActive === 1 && 'bg-light-violet'} py-1 px-4 rounded-l-full rounded-r-full border`}
+                    className={`${isActive === 1 && 'bg-light-violet text-black font-semibold'} py-1 px-4 rounded-l-full rounded-r-full border`}
                     onClick={() => setIsActive(1)}
                 >QUỐC TẾ
                 </button>
                 <button
                     type='button'
-                    className={`${isActive === 2 && 'bg-light-violet'} py-1 px-4 rounded-l-full rounded-r-full border`}
+                    className={`${isActive === 2 && 'bg-light-violet text-black font-semibold'} py-1 px-4 rounded-l-full rounded-r-full border`}
                     onClick={() => setIsActive(2)}
                 >TẤT CẢ
                 </button>

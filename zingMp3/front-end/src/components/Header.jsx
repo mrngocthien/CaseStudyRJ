@@ -28,11 +28,21 @@ function Header() {
         }
     }
     return (
-        <div className='flex justify-between w-full items-center z-10'>
+        <div className='flex justify-between w-full items-center z-10 relative'>
             <div className='flex gap-6 items-center w-full'>
-                <div className='flex gap-6 text-white'>
-                    <span className='hover:text-light-violet cursor-pointer'><MdOutlineKeyboardDoubleArrowLeft size={30}/></span>
-                    <span className='hover:text-light-violet cursor-pointer'><MdOutlineKeyboardDoubleArrowRight size={30}/></span>
+                <div className={`flex gap-6 text-white`}>
+                    <span 
+                        className='hover:text-light-violet cursor-pointer'
+                        onClick={() => navigate(-1)}
+                    >
+                        <MdOutlineKeyboardDoubleArrowLeft size={30}/>
+                    </span>
+                    <span 
+                        className='hover:text-light-violet cursor-pointer'
+                        onClick={() => navigate(1)}
+                    >
+                        <MdOutlineKeyboardDoubleArrowRight size={30}/>
+                    </span>
                 </div>
                 <div className='w-1/2'>
                     <SearchBar />

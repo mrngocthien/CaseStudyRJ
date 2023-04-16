@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Outlet, NavLink } from 'react-router-dom';
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { searchMenu } from '../../ultis/menu'
@@ -9,7 +9,6 @@ const notActivedStyle = 'text-gray-300 font-bold px-3 cursor-pointer hover:text-
 
 const Search = () => {
   const { keyword } = useSelector(state => state.music)
-  const [isActive, setIsActive] = useState(0)
   return (
     <div className='px-[59px] w-full h-[80%] overflow-y-auto'>
       <Scrollbars style={{width: "100%", height: "100%" }}>

@@ -23,7 +23,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     const [currentSeconds, setCurrentSeconds] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
     const [repeatMode, setRepeatMode] = useState(0)
-    const [volumeValue, setVolumeValue] = useState(100)
+    const [volumeValue, setVolumeValue] = useState(70)
     const [liked, setLiked] = useState(false)
     
     const [isLoadingSong, setIsLoadingSong] = useState(false)
@@ -259,7 +259,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     onChange={handleChangeVolume}
                 />
                 <span 
-                    className={`${isShowRightSidebar ? "bg-dark-violet opacity-100" : "bg-gray-500"} p-1 rounded-md cursor-pointer opacity-50 hover:opacity-100`}
+                    className={`${isShowRightSidebar ? "bg-light-violet" : "bg-gray-500"} p-1 rounded-md cursor-pointer hover:bg-light-violet`}
                     title="Danh sách phát"
                     onClick={handleShowRightSiderbar}
                 >
