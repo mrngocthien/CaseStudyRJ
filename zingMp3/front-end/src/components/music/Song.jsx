@@ -9,10 +9,12 @@ const { HiOutlineMusicNote } = icons
 //received songData from SongList component
 const Song = ({ songData, isHideAlbum }) => {
   const dispatch = useDispatch();
-    // console.log({songData})
+  
   const handleClickSong = () => {
     dispatch(actions.setCurrentSongId(songData?.encodeId))
     dispatch(actions.play(true))
+    dispatch(actions.playAlbum(true))
+    dispatch(actions.setRecentSong({thumbnail: songData.thumbnail, title: songData.title, encodeId: songData.encodeId, artistsNames: songData.artistsNames}))
   }
   return (
     <div 

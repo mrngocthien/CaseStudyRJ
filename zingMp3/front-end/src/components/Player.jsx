@@ -23,7 +23,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     const [currentSeconds, setCurrentSeconds] = useState(0)
     const [isShuffle, setIsShuffle] = useState(false)
     const [repeatMode, setRepeatMode] = useState(0)
-    const [volumeValue, setVolumeValue] = useState(70)
+    const [volumeValue, setVolumeValue] = useState(100)
     const [liked, setLiked] = useState(false)
     
     const [isLoadingSong, setIsLoadingSong] = useState(false)
@@ -84,7 +84,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                 setCurrentSeconds(Math.round(audio.currentTime))
             }, 200)
         }
-    },[audio, isPlaying])
+    },[audio])
 
     //for shuffle and repeat button
     useEffect(() => {

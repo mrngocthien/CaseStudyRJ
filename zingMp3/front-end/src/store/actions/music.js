@@ -31,6 +31,11 @@ export const setCurrentAlbumId = (albumId) => ({
     albumId 
 });
 
+export const setRecentSong = (data) => ({
+    type: actionTypes.SET_RECENT,
+    data 
+});
+
 export const search = (keyword) => async (dispatch) => {
     try {
         const res = await apis.apiSearch(keyword);

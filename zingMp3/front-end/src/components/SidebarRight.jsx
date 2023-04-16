@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import icons from "../ultis/icons";
 import { useSelector } from 'react-redux'
-import { SongItem, Song} from './';
+import { SongItem, RightSidebarSongItem} from './';
 import * as apis from '../apis'
 import { Scrollbars } from "react-custom-scrollbars-2";
 const {
@@ -11,7 +11,7 @@ const {
 
 const SidebarRight = () => {
   const [isActive, setIsActive] = useState(0)
-  const { currentSongData, currentAlbumId } = useSelector(state => state.music);
+  const { currentSongData, currentAlbumId, isPlaying, recentSongs } = useSelector(state => state.music);
   const [albumData, setAlbumData] = useState(null)
   useEffect(() => { 
     const fetchDetailPlaylist = async () => {
@@ -24,10 +24,9 @@ const SidebarRight = () => {
         console.log(error)
       }
     }
-    fetchDetailPlaylist()
-  }, [currentAlbumId])
-
-  console.log(albumData)
+    if (currentAlbumId && isPlaying) fetchDetailPlaylist()
+  }, [currentAlbumId, isPlaying])
+  
   return (
     <div className='w-full h-full bg-main-200 flex flex-col gap-1 text-xs text-gray-300'>
       <div className='h-[70px] flex-none px-2 py-[14px] flex gap-8 justify-between items-center'>
@@ -44,7 +43,8 @@ const SidebarRight = () => {
         <span className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'><RiDeleteBinFill size={20}/></span>
       </div>  
       <div className='w-full flex flex-col p-2'>
-        <SongItem  
+        <SongItem
+          key={currentSongData.encodeId}  
           data={currentSongData}
           size='w-[40px] h-[40px]'
           style= 'bg-main-100 hover:bg-dark-violet text-white'
@@ -59,10 +59,26 @@ const SidebarRight = () => {
       </div>}
       {isActive === 0 &&
        <Scrollbars>
-        <div className='flex flex-col pt-2'>
+        <div className='flex flex-col pt-2 gap-2'>
           {albumData?.map(item => (
-            <SongItem
-              key={item.encodeId}  
+            <RightSidebarSongItem
+              key={item.encodeId}
+              isHideReleaseDate
+              data={item}
+              size='w-[40px] h-[40px]'
+              style= 'bg-main-100 hover:bg-dark-violet text-white py-2'
+            />
+          ))}
+        </div>
+        <div className='w-full h-[100px]'></div>
+        </Scrollbars>
+      }
+      {isActive === 1 &&<Scrollbars>
+        <div className='flex flex-col pt-2 gap-2'>
+          {recentSongs?.map(item => (
+            <RightSidebarSongItem
+              key={item.encodeId}
+              isHideReleaseDate
               data={item}
               size='w-[40px] h-[40px]'
               style= 'bg-main-100 hover:bg-dark-violet text-white'
@@ -70,8 +86,7 @@ const SidebarRight = () => {
           ))}
         </div>
         <div className='w-full h-[100px]'></div>
-        </Scrollbars>
-      }
+        </Scrollbars>}
     </div>
   )
 }
