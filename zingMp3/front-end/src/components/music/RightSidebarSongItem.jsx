@@ -11,7 +11,6 @@ const SongItem = ({data, isHideReleaseDate, size, style}) => {
     dispatch(actions.setCurrentSongId(data.encodeId))
     dispatch(actions.play(true))
     dispatch(actions.setRecentSong({thumbnail: data.thumbnail, title: data.title, encodeId: data.encodeId, artistsNames: data.artistsNames}))
-
   }
   
   return (

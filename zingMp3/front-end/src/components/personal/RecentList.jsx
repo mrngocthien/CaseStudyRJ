@@ -7,12 +7,8 @@ const RecentList = () => {
   return (
     <div>
       <SongItem 
-        thumbnail={currentSongData.thumbnail}
-        title={currentSongData.title}
-        artistsNames={currentSongData.artistsNames}
-        releaseDate={currentSongData.releaseDate}
-        sid={currentSongData.encodeId}
-        size='w-[40px] h-[40px]'
+        data={currentSongData}
+        size={['w-[40px] h-[40px]']}
       />
       <SongList isHide />
     </div>

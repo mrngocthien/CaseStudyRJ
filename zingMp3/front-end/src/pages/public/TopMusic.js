@@ -10,7 +10,7 @@ function TopMusic() {
     const handleClickedBanner = (item) => {
         const albumPath = item?.link?.split('.')[0];
         // console.log(item?.link)
-        navigate(albumPath, {state: { playAlbum: false }})
+        navigate(albumPath, {state: { playAlbum: true }})
     };
     return (
        <div className='px-[59px] relative flex flex-col gap-4'>

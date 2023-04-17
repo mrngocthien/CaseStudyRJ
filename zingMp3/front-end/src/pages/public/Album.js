@@ -46,7 +46,7 @@ const Album = () => {
                 <img 
                   src={playlistData?.thumbnailM} 
                   alt="thumbnail" 
-                  className={`w-full object-contain ${(isPlaying || location?.state?.playAlbum ) ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'}`} 
+                  className={`w-full object-contain ${(isPlaying && location?.state?.playAlbum ) ? 'rounded-full animate-rotate-slowly opacity-50' : 'rounded-md animate-rotate-faster'}`} 
                 />
                 <div 
                   className="absolute top-0 left-0 right-0 bottom-0 hover:bg-overlay-30 flex items-center justify-center cursor-pointer"

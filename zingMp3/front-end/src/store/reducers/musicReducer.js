@@ -10,7 +10,7 @@ const initState = {
     keyword: '',
     artistData: null,
     currentAlbumId: null,
-    recentSongs:[]
+    recentSongs: []
 }
 
 const musicReducer = (state = initState, action) => { 
@@ -46,9 +46,21 @@ const musicReducer = (state = initState, action) => {
                 currentAlbumId: action.albumId || null
             }
         case actionTypes.SET_RECENT:
+            let songs = state.recentSongs
+            if (action.data) {
+                if (songs.some(item => item.endcodeId === action.data.endcodeId)) {
+                    songs = songs.filter((item) => item.endcodeId !== action.data.endcodeId)
+                }
+
+                if (songs.length > 4) {
+                    songs = songs.filter((item, index, self) => index !== self.length -1)
+                }
+                songs = [action.data, ...state.recentSongs]
+            }
+            // 
             return {
                 ...state,
-                recentSongs: Array.isArray(state.recentSongs) ? [action.data, ...state.recentSongs] : [action.data]
+                recentSongs: songs
             }
             
         case actionTypes.SEARCH:

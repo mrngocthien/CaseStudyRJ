@@ -6,10 +6,13 @@ import * as actions from '../../store/actions'
 
 const NewReleaseItem = ({data}) => {
   const dispatch = useDispatch()
+  // console.log(data)
 
   const handleClick = () => {
-    dispatch(actions.setCurrentSongId(data?.sid))
+    dispatch(actions.setCurrentSongId(data?.encodeId))
     dispatch(actions.play(true))
+    dispatch(actions.setRecentSong({thumbnail: data.thumbnail, title: data.title, encodeId: data.encodeId, artistsNames: data.artistsNames}))
+
   }
 
   return (
