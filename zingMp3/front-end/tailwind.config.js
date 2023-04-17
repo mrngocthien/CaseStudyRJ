@@ -21,7 +21,8 @@ module.exports = {
         'dark-green': "#00bc00",
         'dark-orange': "#E2570D",
         'light-gray': "#E2E3D7",
-        'dark-gray': "#7F7D7D"
+        'dark-gray': "#7F7D7D",
+        'light-purple': "#9b4de0"
       },
       keyframes: {
         'slide-right': {

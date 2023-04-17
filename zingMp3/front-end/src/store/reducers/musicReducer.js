@@ -48,7 +48,7 @@ const musicReducer = (state = initState, action) => {
         case actionTypes.SET_RECENT:
             let songs = state.recentSongs
             if (action.data) {
-                if (songs.some(item => item.endcodeId === action.data.endcodeId)) {
+                if (state.recentSongs.some(item => item.endcodeId === action.data.endcodeId)) {
                     songs = songs.filter((item) => item.endcodeId !== action.data.endcodeId)
                 }
 

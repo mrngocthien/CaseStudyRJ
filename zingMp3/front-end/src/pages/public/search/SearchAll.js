@@ -12,7 +12,7 @@ const SearchAll = () => {
     const albumPath = item?.link?.split('.')[0];
     // console.log(item?.link)
     navigate(albumPath, {state: { playAlbum: false }})
-};
+  };
   return (
     <div className='w-full flex flex-col gap-4'>
       <div className='flex flex-col gap-4'>
@@ -36,10 +36,9 @@ const SearchAll = () => {
           {searchData?.songs?.filter((item, index) => [...Array(2).keys()].some(item => item === index))?.map(item => (
             <div key={item.encodeId} className='flex-1'>
               <SongItem 
-              sid={item.encodeId}
-              thumbnail={item.thumbnail}
-              title={item.title}
-              artistsNames={item.artistsNames}
+              data={item}
+              size={['w-[70px] h-[70px]']}
+              style= {['bg-main-100 p-[8px]']}
             />
             </div>
           ))}

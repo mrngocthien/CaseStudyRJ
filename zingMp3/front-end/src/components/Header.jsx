@@ -20,8 +20,8 @@ function Header() {
 
     const handleLogout = async () => { 
         try {
-            await signOut(auth);
             dispatch(actions.play(false))
+            await signOut(auth);
             navigate(path.PUBLIC)
         } catch (error) {
             console.log('error logging out', error)

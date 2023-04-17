@@ -16,6 +16,7 @@ export const play = (flag) => ({
     flag 
 });
 
+
 export const playAlbum = (flag) => ({
     type: actionTypes.SET_ALBUM,
     flag 
