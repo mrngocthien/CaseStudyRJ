@@ -47,28 +47,20 @@ const musicReducer = (state = initState, action) => {
             }
         case actionTypes.SET_RECENT:
             let songs = [...state.recentSongs]
-            let mySongs = [];
-            
             if (action.data) {
-                
-                console.log('recent song', state.recentSongs)
-                if (songs.filter((item) => item.endcodeId !== action.data.endcodeId).length > 0) {
-                    songs = songs.filter((item) => item.endcodeId !== action.data.endcodeId)
-                   
+                if (songs?.some((item) => item.encodeId === action.data.encodeId)) {
+                    songs = songs.filter(item => item.encodeId !== action.data.encodeId)
                 }
-                mySongs = [action.data, ...songs]
-                   
-
-                // if (songs.length > 4) {
-                //     songs = songs.filter((item, index, self) => index !== self.length -1)
-                // }
-
-                console.log(mySongs)
+                if (songs.length > 9) {
+                    songs = songs.filter((item, index, self) => index !== self.length -1)
+                }
+                songs = [action.data, ...songs]
             }
+            
             // 
             return {
                 ...state,
-                recentSongs: mySongs
+                recentSongs: songs
             }
             
         case actionTypes.SEARCH:

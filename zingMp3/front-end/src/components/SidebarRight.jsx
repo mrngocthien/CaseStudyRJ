@@ -59,7 +59,6 @@ const SidebarRight = () => {
       {!isRecent &&
         <div className='w-full flex flex-col px-2 relative'>
           {isPlaying && <span className='absolute top-4 left-3'><AudioPlayingBars /></span>}
-          {console.log(currentSongData)}
           <SongItem
             key={currentSongData?.encodeId}  
             data={currentSongData}
@@ -78,7 +77,7 @@ const SidebarRight = () => {
         </div>
       }
       {!isRecent &&
-        <Scrollbars>
+        <Scrollbars style={{width: "100%", height: "100%"}}>
           <div className='flex flex-col pt-2 gap-2'>
             {albumData?.map(item => (
               <RightSidebarSongItem
@@ -86,7 +85,7 @@ const SidebarRight = () => {
                 isHideReleaseDate
                 data={item}
                 size={['w-[40px] h-[40px]']}
-                style= {['bg-main-100 hover:bg-dark-violet text-white py-2']}
+                style= {['bg-main-100 hover:bg-dark-violet text-white py-2 px-2']}
               />
             ))}
           </div>
@@ -96,7 +95,7 @@ const SidebarRight = () => {
 
       {/* some things for recent list */}
       {isRecent &&
-        <Scrollbars>
+        <Scrollbars style={{width: "100%", height: "100%"}}>
           <div className='flex flex-col pt-2 gap-2'>
             {recentSongs?.map(item => (
               <RightSidebarSongItem
@@ -104,7 +103,7 @@ const SidebarRight = () => {
                 isHideReleaseDate
                 data={item}
                 size={['w-[40px] h-[40px]']}
-                style= {['bg-main-100 hover:bg-dark-violet text-white']}
+                style= {['bg-main-100 hover:bg-dark-violet text-white px-2 py-1']}
               />
             ))}
           </div>
