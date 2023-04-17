@@ -59,8 +59,9 @@ const SidebarRight = () => {
       {!isRecent &&
         <div className='w-full flex flex-col px-2 relative'>
           {isPlaying && <span className='absolute top-4 left-3'><AudioPlayingBars /></span>}
+          {console.log(currentSongData)}
           <SongItem
-            key={currentSongData.encodeId}  
+            key={currentSongData?.encodeId}  
             data={currentSongData}
             size={['w-[40px] h-[40px]']}
             style= {['bg-main-100 hover:bg-dark-violet text-white']}

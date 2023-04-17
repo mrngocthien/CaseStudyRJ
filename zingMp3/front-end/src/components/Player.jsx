@@ -84,7 +84,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                 setCurrentSeconds(Math.round(audio.currentTime))
             }, 200)
         }
-    },[audio])
+    },[audio, isPlaying])
 
     //for shuffle and repeat button
     useEffect(() => {
