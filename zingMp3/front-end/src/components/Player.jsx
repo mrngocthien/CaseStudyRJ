@@ -81,10 +81,13 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo?.duration) / 100
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`
-                setCurrentSeconds(Math.round(audio.currentTime))
+                setCurrentSeconds(Math.round(audio?.currentTime))
             }, 200)
+        } else {
+            audio.pause()
+            intervalId && clearInterval(intervalId)
         }
-    },[audio, isPlaying])
+    },[audio])
 
     //for shuffle and repeat button
     useEffect(() => {
@@ -132,22 +135,22 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     }
     const handleShuffle = () => { 
         const randomIndex = Math.round(Math.random() * songs?.length) - 1;
-        dispatch(actions.setCurrentSongId(songs[randomIndex].encodeId))
+        dispatch(actions.setCurrentSongId(songs[randomIndex]?.encodeId))
         dispatch(actions.play(true))
     }
     const handleNextSong = () => { 
         if (songs) {
             let currentSongIndex;
             songs?.forEach((item, index) => {
-                if (item.encodeId === currentSongId) {
+                if (item?.encodeId === currentSongId) {
                     currentSongIndex = index
                 }
             })
             if (currentSongIndex === songs.length -1) {
-                dispatch(actions.setCurrentSongId(songs[0].encodeId))
+                dispatch(actions.setCurrentSongId(songs[0]?.encodeId))
 
             } else {
-                dispatch(actions.setCurrentSongId(songs[currentSongIndex + 1].encodeId))
+                dispatch(actions.setCurrentSongId(songs[currentSongIndex + 1]?.encodeId))
             }
             
             dispatch(actions.play(true))
@@ -158,11 +161,11 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
         if (songs) {
             let currentSongIndex;
             songs?.forEach((item, index) => {
-                if (item.encodeId === currentSongId) {
+                if (item?.encodeId === currentSongId) {
                     currentSongIndex = index
                 }
             })
-            dispatch(actions.setCurrentSongId(songs[currentSongIndex - 1].encodeId))
+            dispatch(actions.setCurrentSongId(songs[currentSongIndex - 1]?.encodeId))
             dispatch(actions.play(true))
         }    
     }
@@ -170,8 +173,8 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
         const trackRect = trackRef.current.getBoundingClientRect();
         const percent = Math.round((e.clientX - trackRect.left) * 10000 / trackRect.width) / 100;
         thumbRef.current.style.cssText = `right: ${100 - percent}%`
-        audio.currentTime = percent * songInfo.duration / 100
-        setCurrentSeconds(Math.round(percent * songInfo.duration / 100))
+        audio.currentTime = percent * songInfo?.duration / 100
+        setCurrentSeconds(Math.round(percent * songInfo?.duration / 100))
     }
 
     return (

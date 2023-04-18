@@ -95,7 +95,7 @@ const SidebarRight = () => {
                 isHideReleaseDate
                 data={item}
                 size={['w-[40px] h-[40px]']}
-                style= {['bg-main-100 hover:bg-dark-violet text-white py-2 px-2']}
+                style= {['relative bg-main-100 hover:bg-dark-violet text-white py-2 px-2']}
               />
             ))}
           </div>
@@ -113,7 +113,7 @@ const SidebarRight = () => {
                 isHideReleaseDate
                 data={item}
                 size={['w-[40px] h-[40px]']}
-                style= {['bg-main-100 hover:bg-dark-violet text-white px-2 py-1']}
+                style= {['relative bg-main-100 hover:bg-dark-violet text-white px-2 py-1']}
               />
             ))}
           </div>

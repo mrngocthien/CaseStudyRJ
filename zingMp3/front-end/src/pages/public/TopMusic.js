@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 
 function TopMusic() {
     const { top100 } = useSelector(state => state.app)
-    console.log(top100)
     const navigate = useNavigate();
 
     const handleClickedBanner = (item) => {

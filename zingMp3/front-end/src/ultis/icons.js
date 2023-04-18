@@ -17,7 +17,7 @@ import { IoSearchOutline, IoShuffle, IoVolumeHigh, IoVolumeMedium, IoVolumeLow, 
 import { RxHeart, RxHeartFilled } from 'react-icons/rx'
 import { TbRepeatOnce, TbRepeat } from 'react-icons/tb'
 import { HiOutlineMusicNote } from 'react-icons/hi'
-import { RiDeleteBinFill } from 'react-icons/ri'
+import { RiDeleteBinFill, RiVipDiamondFill } from 'react-icons/ri'
 
 const icons = {
     MdOutlineLibraryMusic,
@@ -46,7 +46,8 @@ const icons = {
     IoVolumeMute,
     BsMusicNoteList,
     RiDeleteBinFill,
-    AiOutlineClose
+    AiOutlineClose,
+    RiVipDiamondFill
 }
 
 export default icons;
