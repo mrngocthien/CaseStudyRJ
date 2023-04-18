@@ -56,13 +56,15 @@ const musicReducer = (state = initState, action) => {
                 }
                 songs = [action.data, ...songs]
             }
-            
-            // 
             return {
                 ...state,
                 recentSongs: songs
             }
-            
+        case actionTypes.CLEAR_RECENT:
+            return {
+                ...state,
+                recentSongs: action.data || null
+            }    
         case actionTypes.SEARCH:
             return {
                 ...state,

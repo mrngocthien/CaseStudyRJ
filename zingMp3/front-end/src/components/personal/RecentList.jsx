@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { SongItem } from '../../components';
 import { useSelector } from 'react-redux'
-import { Scrollbars } from "react-custom-scrollbars-2"
-import * as apis from '../../apis'
 
 const RecentList = () => {
   const { recentSongs } = useSelector(state => state.music);

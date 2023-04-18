@@ -8,7 +8,7 @@ const TrendingArtist = ({data}) => {
     const albumPath = item?.link.split('.')[0];
     navigate(albumPath, {state: { playAlbum: false }})
   };
-
+  console.log(data.items)
   return (
     <div className='mt-10 flex flex-col gap-4'>
       <h3 className='text-[20px] font-bold'>{data?.title}</h3>
@@ -17,10 +17,10 @@ const TrendingArtist = ({data}) => {
           <div key={item.encodeId} className='flex-1 flex-col gap-4'>
             <img 
               src={item.thumbnail} alt="thumbnailM" 
-              className={`rounded-md object-contain  hover:animate-scale-up-image`}
+              className={`rounded-md object-contain hover:animate-scale-up-image`}
               onClick={() => handleClickedBanner(item)}
             />
-            <span className='text-gray-400'>{item.sortDescription}</span> 
+            <span className='text-gray-400'>{item?.sortDescription.length > 40 ? `${item?.sortDescription.slice(0, 40)}...` : item?.sortDescription}</span> 
           </div>
         ))}
       </div>

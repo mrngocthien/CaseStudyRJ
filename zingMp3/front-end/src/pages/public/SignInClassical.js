@@ -99,7 +99,7 @@ const SignInClassical = () => {
                         <button 
                             type="submit"
                             onClick={() => navigate(path.PUBLIC)}
-                            className='w-1/2 m-auto p-1 rounded-md  bg-dark-orange rounded-md hover:bg-red-700'
+                            className='w-1/2 m-auto p-1 bg-dark-orange rounded-md hover:bg-red-700'
                         >QUAY LẠI</button>
                     </div>
                 </form>

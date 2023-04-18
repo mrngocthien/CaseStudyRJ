@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import icons from "../ultis/icons";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { SongItem, RightSidebarSongItem} from './';
 import * as apis from '../apis'
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { AudioPlayingBars } from "../components";
-const {
-  RiDeleteBinFill 
+import * as actions from '../store/actions'
+
+const {  RiDeleteBinFill 
 } = icons;
 
 
@@ -14,6 +15,7 @@ const SidebarRight = () => {
   const [isRecent, setIsRecent] = useState(false)
   const { currentSongData, currentAlbumId, isPlaying, recentSongs, currentSongId } = useSelector(state => state.music);
   const [albumData, setAlbumData] = useState(null)
+  const dispatch = useDispatch()
 
   const fetchDetailPlaylist = async () => {
     try {
@@ -38,6 +40,9 @@ const SidebarRight = () => {
     isPlaying && setIsRecent(false)
   }, [isPlaying, currentSongId])
 
+  const handleClearRecentSongs = () => { 
+    dispatch(actions.clearRecentSong([]))
+  }
   return (
     <div className='w-full h-full bg-main-200 flex flex-col gap-1 text-xs text-gray-300'>
       {/* header tabs */}
@@ -52,7 +57,12 @@ const SidebarRight = () => {
             onClick={() => setIsRecent(true)}  
           >Nghe gần đây</span> 
         </div>
-        <span className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'><RiDeleteBinFill size={20}/></span>
+        {isRecent && <span 
+          className='p-1 bg-gray-600 hover:bg-dark-violet cursor-pointer rounded-full'
+          onClick={handleClearRecentSongs}
+        >
+          <RiDeleteBinFill size={20}/>
+        </span>}
       </div>
       
       {/* some things for playlist */}

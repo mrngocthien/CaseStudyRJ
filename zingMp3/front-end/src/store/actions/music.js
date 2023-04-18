@@ -37,6 +37,11 @@ export const setRecentSong = (data) => ({
     data 
 });
 
+export const clearRecentSong = (data) => ({
+    type: actionTypes.CLEAR_RECENT,
+    data 
+});
+
 export const search = (keyword) => async (dispatch) => {
     try {
         const res = await apis.apiSearch(keyword);

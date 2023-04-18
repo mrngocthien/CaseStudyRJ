@@ -31,7 +31,7 @@ const Public = () => {
           <SidebarRight />
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-[90px] fixed z-30">
+      <div className="bottom-0 left-0 right-0 h-[90px] fixed z-30">
         <Player setIsShowRightSidebar = {setIsShowRightSidebar} isShowRightSidebar = {isShowRightSidebar} />
       </div>
     </div>
