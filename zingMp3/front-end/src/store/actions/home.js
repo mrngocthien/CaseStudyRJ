@@ -1,5 +1,6 @@
 import actionTypes from "./actionTypes";
 import * as apis from '../../apis';
+// import { call, takeLatest, put } from 'redux-saga/effects'
 
 export const getHome = () => async (dispatch) => {
     try {
@@ -23,3 +24,4 @@ export const getHome = () => async (dispatch) => {
         })
     }
 }
+
