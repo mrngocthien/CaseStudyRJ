@@ -58,7 +58,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                 audio.pause()
                 setAudio(new Audio())
                 setCurrentSeconds(0)
-                thumbRef.current.style.cssText = 'right: 100%'
+                thumbRef && thumbRef.current && (thumbRef.current.style = 'right: 100%')
                 dispatch(actions.play(false))
                 toast.warning(res2.data.msg)
             }
@@ -80,12 +80,9 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
             play()
             intervalId = setInterval(() => {
                 let percent = Math.round(audio.currentTime * 10000 / songInfo?.duration) / 100
-                thumbRef.current.style.cssText = `right: ${100 - percent}%`
+                thumbRef && thumbRef.current && (thumbRef.current.style = `right: ${100 - percent}%`);
                 setCurrentSeconds(Math.round(audio?.currentTime))
             }, 200)
-        } else {
-            audio.pause()
-            intervalId && clearInterval(intervalId)
         }
     },[audio])
 
@@ -172,7 +169,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
     const handleClickProgressBar = (e) => { 
         const trackRect = trackRef.current.getBoundingClientRect();
         const percent = Math.round((e.clientX - trackRect.left) * 10000 / trackRect.width) / 100;
-        thumbRef.current.style.cssText = `right: ${100 - percent}%`
+        thumbRef && thumbRef.current && (thumbRef.current.style = `right: ${100 - percent}%`)
         audio.currentTime = percent * songInfo?.duration / 100
         setCurrentSeconds(Math.round(percent * songInfo?.duration / 100))
     }
@@ -181,11 +178,11 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
         <div className="bg-main-100 h-full px-5 flex">
             <div className="w-[30%] flex-auto gap-3 flex items-center">
                 <div className="relative">
-                    <img
+                    {songInfo?.thumbnail && <img
                         src={songInfo?.thumbnail}
                         alt="thumbnail"
                         className="w-16 h-16 object-cover rounded-md"
-                    />
+                    />}
                     <span className={`absolute flex items-center justify-center top-0 left-0 right-0 bottom-0 ${isPlaying ? 'block' : 'hidden'}`}>
                         <AudioPlayingBars/>
                     </span>
@@ -245,7 +242,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     >
                         <div ref={thumbRef} id='thumb-progress' className='bg-light-violet absolute top-0 left-0 bottom-0 rounded-l-full rounded-r-full'></div>
                     </div>
-                    <div>{moment.utc(songInfo?.duration * 1000).format('mm:ss')}</div>
+                    <div>{songInfo?.duration ? moment.utc(songInfo?.duration * 1000).format('mm:ss') : '0:00'}</div>
                 </div>
             </div>
             <div className="w-[30%] flex-auto flex gap-2 items-center justify-end">

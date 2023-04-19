@@ -15,7 +15,6 @@ const SongItem = ({data, isHideReleaseDate, size, style}) => {
     dispatch(actions.play(true))
     dispatch(actions.setRecentSong({thumbnail: data.thumbnail, title: data.title, encodeId: data.encodeId, artistsNames: data.artistsNames}))
   }
-  console.log(data.streamingStatus)
   return (
     <div className={`${style || 'bg-main-200 hover:bg-main-100 gap-[10px]'} gap-[10px] flex rounded-md items-center`} onClick={handleClick}>
       <span className='cursor-pointer text-light-violet  absolute right-4 top-5' title='VIP'>

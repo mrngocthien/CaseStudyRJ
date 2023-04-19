@@ -21,6 +21,7 @@ function Header() {
     const handleLogout = async () => { 
         try {
             dispatch(actions.play(false))
+            dispatch(actions.setCurrentSongId([]))
             await signOut(auth);
             navigate(path.PUBLIC)
         } catch (error) {

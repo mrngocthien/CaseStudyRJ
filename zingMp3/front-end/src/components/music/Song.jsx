@@ -16,7 +16,7 @@ const Song = ({ songData, isHideAlbum }) => {
     dispatch(actions.playAlbum(true))
     dispatch(actions.setRecentSong({thumbnail: songData.thumbnail, title: songData.title, encodeId: songData.encodeId, artistsNames: songData.artistsNames}))
   }
-  console.log(songData)
+  
   return (
     <div 
       className='flex justify-between items-center p-[10px] border-t border-gray-400 hover:bg-main-100 cursor-pointer'
