@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import * as apis from '../../apis'
-import PageLoading from '../../components/music/PageLoading';
+import PageLoading from '../../components/forLoading/PageLoading';
 import { Song, SingerAlbumItem } from '../../components';
 import { Scrollbars } from "react-custom-scrollbars-2";
-import { Link } from 'react-router-dom';
 
 const Singer = () => {
   const { singer } = useParams();

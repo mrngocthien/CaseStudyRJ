@@ -10,7 +10,8 @@ const initState = {
     keyword: '',
     artistData: null,
     currentAlbumId: null,
-    recentSongs: []
+    recentSongs: [],
+    favouriteSongs: []
 }
 
 const musicReducer = (state = initState, action) => { 
@@ -59,6 +60,32 @@ const musicReducer = (state = initState, action) => {
             return {
                 ...state,
                 recentSongs: songs
+            }
+        case actionTypes.SET_FAVOURITE:
+            let favSongs = [...state.favouriteSongs]
+            if (action.data) {
+                if (favSongs?.some((item) => item.encodeId === action.data.encodeId)) {
+                    favSongs = favSongs.filter(item => item.encodeId !== action.data.encodeId)
+                }
+                if (favSongs.length > 9) {
+                    favSongs = favSongs.filter((item, index, self) => index !== self.length -1)
+                }
+                favSongs = [action.data, ...favSongs]
+            }
+            return {
+                ...state,
+                favouriteSongs: favSongs
+            }
+        case actionTypes.DEL_FAVOURITE_SONG:
+            let updateFavSongs = [...state.favouriteSongs]
+            if (action.data) {
+                if (updateFavSongs?.some((item) => item.encodeId === action.data.encodeId)) {
+                    updateFavSongs = updateFavSongs.filter(item => item.encodeId !== action.data.encodeId)
+                }
+            }
+            return {
+                ...state,
+                favouriteSongs: updateFavSongs
             }
         case actionTypes.CLEAR_RECENT:
             return {

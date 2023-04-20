@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import icons from "../ultis/icons";
-import * as actions from '../store/actions'
+import icons from "../../ultis/icons";
+import * as actions from '../../store/actions'
 import { useDispatch } from 'react-redux';
 import { useNavigate, createSearchParams, Link } from "react-router-dom";
-import path from './../ultis/path';
+import path from '../../ultis/path';
 
 const { IoSearchOutline, AiOutlineClose } = icons;
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import PageLoading from './music/PageLoading'
-import logo from '../assets/logo-dark.svg'
+import PageLoading from './PageLoading'
+import logo from '../../assets/logo-dark.svg'
 
 const Loading = () => {
   return (

@@ -1,23 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
-import { AudioPlayingBars, LoadingSong } from "../components";
+import { AudioPlayingBars, LoadingSong } from "..";
 import { useSelector, useDispatch } from "react-redux";
-import * as apis from "../apis";
-import icons from "../ultis/icons";
-import * as actions from '../store/actions'
+import * as apis from "../../apis";
+import icons from "../../ultis/icons";
+import * as actions from '../../store/actions'
 import { toast } from 'react-toastify'
 import moment from 'moment'
 const {
-  RxHeartFilled, RxHeart, BsThreeDots, TbRepeat,
-  TbRepeatOnce, BsSkipEndFill, BsSkipStartFill,
-  BsPlayFill, IoShuffle, BsPauseFill, BsMusicNoteList,
-  IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute 
+    BsHeartPulseFill,BsHeartbreakFill, BsThreeDots, 
+    TbRepeat, TbRepeatOnce, BsSkipEndFill, BsSkipStartFill,
+    BsPlayFill, IoShuffle, BsPauseFill, BsMusicNoteList,
+    IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute 
 } = icons;
 
 var intervalId;
 
 const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
-    const { currentSongId, isPlaying, songs } = useSelector((state) => state.music);
-
+    const { currentSongId, isPlaying, songs, currentSongData } = useSelector((state) => state.music);
     const [songInfo, setSongInfo] = useState(null);
     const [audio, setAudio] = useState(new Audio());
     const [currentSeconds, setCurrentSeconds] = useState(0)
@@ -105,9 +104,19 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
         }
     }, [audio, isShuffle, repeatMode])
 
-    const handleLiked = () => { 
-        setLiked(prev => !prev);
-        
+    const handleLike = () => { 
+        setLiked(true)
+        dispatch(actions.setFavourite({
+            thumbnail: currentSongData.thumbnail, 
+            title: currentSongData?.title, 
+            encodeId: currentSongData?.encodeId, 
+            artistsNames: currentSongData?.artistsNames
+        }))
+        console.log(currentSongData)
+    }
+    const handleDislike =() => {
+        setLiked(false) 
+        dispatch(actions.setDelSong({encodeId: currentSongData.encodeId}))
     }
     const handleShowRightSiderbar = () => { 
         setIsShowRightSidebar(prev => !prev)
@@ -192,14 +201,13 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="flex gap-4 pl-2">
-                    <span 
-                        onClick={handleLiked} 
-                        className="cursor-pointer">
-                        {liked ? <RxHeartFilled size={18}/> : <RxHeart size={18} />}
+                    <span className="cursor-pointer flex gap-2">
+                        {!liked && <span onClick={handleLike} className={!liked && 'text-white'}><BsHeartPulseFill size={18}/></span>}
+                        {liked && <span onClick={handleDislike} className={liked && 'text-light-violet'}><BsHeartPulseFill size={18} /></span>}
                     </span>
-                    <span className="cursor-pointer">
+                    {/* <span className="cursor-pointer">
                         <BsThreeDots size={16} />
-                    </span>
+                    </span> */}
                 </div>
             </div>
             <div className="w-[40%] flex-auto flex flex-col gap-2 items-center justify-center py-2">

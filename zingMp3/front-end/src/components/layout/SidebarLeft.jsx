@@ -1,8 +1,8 @@
 import React from 'react'
-import logo from '../assets/logo-dark.svg'
-import {sidebarMenu} from '../ultis/menu';
+import logo from '../../assets/logo-dark.svg'
+import {sidebarMenu} from '../../ultis/menu';
 import { NavLink, useNavigate } from 'react-router-dom';
-import path from '../ultis/path'
+import path from '../../ultis/path'
 
 const activedStyle = 'font-bold py-2 px-[25px] flex gap-[12px] items-center text-light-violet';
 const notActiveStyle = 'font-bold py-2 px-[25px] flex gap-[12px] items-center text-gray-200';

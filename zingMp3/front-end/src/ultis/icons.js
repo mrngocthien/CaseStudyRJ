@@ -9,12 +9,19 @@ import { BsThreeDots,
     BsPlayFill, 
     BsPauseFill, 
     BsDot,
-    BsMusicNoteList
+    BsMusicNoteList,
+    BsHeartPulseFill,
+    BsHeartbreakFill
     } from 'react-icons/bs'
-import { AiOutlineLineChart, AiOutlineStar, AiOutlineLogout, AiOutlineClose } from 'react-icons/ai'
+import { 
+    AiOutlineLineChart, AiOutlineStar, AiOutlineLogout, AiOutlineClose, 
+    } from 'react-icons/ai'
+
 import { BiDisc } from 'react-icons/bi'
-import { IoSearchOutline, IoShuffle, IoVolumeHigh, IoVolumeMedium, IoVolumeLow, IoVolumeMute } from 'react-icons/io5'
-import { RxHeart, RxHeartFilled } from 'react-icons/rx'
+import { 
+    IoSearchOutline, IoShuffle, IoVolumeHigh, IoVolumeMedium, 
+    IoVolumeLow, IoVolumeMute 
+    } from 'react-icons/io5'
 import { TbRepeatOnce, TbRepeat } from 'react-icons/tb'
 import { HiOutlineMusicNote } from 'react-icons/hi'
 import { RiDeleteBinFill, RiVipDiamondFill } from 'react-icons/ri'
@@ -27,8 +34,8 @@ const icons = {
     MdOutlineKeyboardDoubleArrowLeft,
     MdOutlineKeyboardDoubleArrowRight,
     IoSearchOutline,
-    RxHeart,
-    RxHeartFilled,
+    BsHeartPulseFill,
+    BsHeartbreakFill,
     BsThreeDots,
     TbRepeat,
     TbRepeatOnce,

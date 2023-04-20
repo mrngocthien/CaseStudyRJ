@@ -1,7 +1,7 @@
 import { 
   Home, SignIn, SignInClassical, Public, 
   Personal, Album, TopMusic, SignUp, WeekRank, 
-  Search, SearchSong, SearchAll, Singer, SearchPlaylist } from './pages/public';
+  Search, SearchSong, SearchAll, Singer, SearchPlaylist } from './pages';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

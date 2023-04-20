@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import { NewReleaseItem } from './'
+import { NewReleaseItem } from '..'
 
 
 const Section = ({data}) => {

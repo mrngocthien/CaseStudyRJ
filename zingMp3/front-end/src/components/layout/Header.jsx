@@ -1,14 +1,14 @@
 import React from 'react'
-import icons from '../ultis/icons'
+import icons from '../../ultis/icons'
 import SearchBar from './SearchBar';
 import { signOut } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { auth } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as actions from '../store/actions'
-import path from '../ultis/path';
-import { profileInfo } from './personal/profileInfo';
+import * as actions from '../../store/actions'
+import path from '../../ultis/path';
+import { profileInfo } from '../forPersonal/profileInfo';
 
 
 const { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight, AiOutlineLogout } = icons;

@@ -37,6 +37,16 @@ export const setRecentSong = (data) => ({
     data 
 });
 
+export const setFavourite = (data) => ({
+    type: actionTypes.SET_FAVOURITE,
+    data 
+});
+
+export const setDelSong = (data) => ({
+    type: actionTypes.DEL_FAVOURITE_SONG,
+    data
+});
+
 export const clearRecentSong = (data) => ({
     type: actionTypes.CLEAR_RECENT,
     data 

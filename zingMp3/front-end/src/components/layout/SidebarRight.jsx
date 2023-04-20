@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import icons from "../ultis/icons";
+import icons from "../../ultis/icons";
 import { useSelector, useDispatch } from 'react-redux'
-import { SongItem, RightSidebarSongItem} from './';
-import * as apis from '../apis'
+import { SongItem, RightSidebarSongItem} from '..';
+import * as apis from '../../apis'
 import { Scrollbars } from "react-custom-scrollbars-2";
-import { AudioPlayingBars } from "../components";
-import * as actions from '../store/actions'
+import { AudioPlayingBars } from "..";
+import * as actions from '../../store/actions'
 
 const {  RiDeleteBinFill 
 } = icons;

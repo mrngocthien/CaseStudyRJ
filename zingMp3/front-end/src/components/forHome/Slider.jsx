@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getArrSlider } from "../ultis/funtions";
-import * as actions from "../store/actions";
+import { getArrSlider } from "../../ultis/funtions";
+import * as actions from "../../store/actions";
 import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
