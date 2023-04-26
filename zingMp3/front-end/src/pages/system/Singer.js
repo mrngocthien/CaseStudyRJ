@@ -8,7 +8,6 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 const Singer = () => {
   const { singer } = useParams();
   const [artisData, setArtisData] = useState(null)
-  const [isHover, setIsHover] = useState(false)
 
   useEffect(() => { 
     const fetchArtistData = async () => {

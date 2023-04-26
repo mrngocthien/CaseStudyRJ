@@ -59,7 +59,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                 setCurrentSeconds(0)
                 thumbRef && thumbRef.current && (thumbRef.current.style = 'right: 100%')
                 dispatch(actions.play(false))
-                toast.warning(res2.data.msg)
+                // toast.warning(res2.data.msg)
             }
         }
         fetchDetailSong();
@@ -201,7 +201,7 @@ const Player = ({ isShowRightSidebar, setIsShowRightSidebar }) => {
                     <span className="text-xs text-gray-400">{songInfo?.artistsNames}</span>
                 </div>
                 <div className="flex gap-4 pl-2">
-                    <span className="cursor-pointer flex gap-2">
+                    <span className="cursor-pointer flex gap-2" title="Thêm vào danh sách yêu thích">
                         {!liked && <span onClick={handleLike} className={!liked && 'text-white'}><BsHeartPulseFill size={18}/></span>}
                         {liked && <span onClick={handleDislike} className={liked && 'text-light-violet'}><BsHeartPulseFill size={18} /></span>}
                     </span>

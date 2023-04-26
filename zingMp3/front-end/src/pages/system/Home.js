@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Scrollbars } from "react-custom-scrollbars-2";
 
 const Home = () => {
-  const { newRelease, weekChart, trendingArtist } = useSelector(state => state.app)
+  const { newRelease, trendingArtist } = useSelector(state => state.app)
   return (
     <div className='px-[59px] h-[90%] overflow-y-auto'>
       <Scrollbars style={{width: "100%", height: "90%"}}>

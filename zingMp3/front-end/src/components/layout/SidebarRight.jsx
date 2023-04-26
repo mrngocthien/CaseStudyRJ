@@ -30,7 +30,7 @@ const SidebarRight = () => {
 
   useEffect(() => { 
     currentAlbumId && fetchDetailPlaylist()
-  }, [])
+  }, [currentAlbumId])
 
   useEffect(() => { 
     if (currentAlbumId && isPlaying) fetchDetailPlaylist()
@@ -73,7 +73,7 @@ const SidebarRight = () => {
             key={currentSongData?.encodeId}  
             data={currentSongData}
             size={['w-[40px] h-[40px]']}
-            style= {['bg-main-100 hover:bg-dark-violet text-white']}
+            style= {['bg-dark-violet text-white px-1']}
           />
         </div>
       }

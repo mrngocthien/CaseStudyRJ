@@ -11,7 +11,7 @@ const SingerAlbumItem = ({data, style}) => {
   return (
     <div className='flex flex-col gap-6'>
         {data && <h3 className='text-2xl font-bold'>{data.title}</h3>}
-        <div className='flex gap-8 px-[10px] items-center cursor-pointer'>
+        <div className='flex gap-8 px-[10px] cursor-pointer'>
           {data.items?.filter((item, index) => index <=4)?.map(item => (
             <div key={item.encodeId} className='flex-1 flex flex-col gap-2'>
               <img 
